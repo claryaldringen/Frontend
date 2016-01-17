@@ -20,6 +20,11 @@ class RouterFactory
 			'action' => 'default',
 		));
 
+		$router[] = new Routers\Route('/<url kontakt|email|contact|e-mail>.html',array(
+			'presenter' => 'Frontend',
+			'action' => 'contact'
+		));
+
 		$router[] = new Routers\Route('/download/<hash>',array(
 			'presenter' => 'Frontend',
 			'action' => 'download',

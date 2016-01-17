@@ -1,0 +1,33 @@
+{layout '@layout.latte'}
+
+{block content}
+	<div class="main">
+		<div class="header">
+			<div class="left_panel">
+				<img src="/images/brackett.jpg" width="160" class="brackett">
+				{include 'menu.latte', 'menu' => $items, 'url' => ''}
+			</div>
+		</div>
+		<div class="content">
+			<h1>{$title}</h1>
+			<table class="contact">
+				<tr>
+					<td colspan="2">
+						{foreach $flashes as $flash}
+							<div class="flash">{$flash->message}</div>
+						{/foreach}
+					</td>
+				</tr>
+				<tr>
+					<td class="center"><img src="http://cms.freetech.cz/images/userimages/medium/366de7e6b7672b35edbdbc5e10a8e184.jpg"><br>1st sgt. Duffy<br>Česká Republika</td>
+					<td>{control emailFormCr}</td>
+				</tr>
+				<tr><td colspan="2">&nbsp;</td></tr>
+				<tr>
+					<td class="center"><img src="http://cms.freetech.cz/images/userimages/medium/21e6463692ca490b99d3780c761f3995.jpg"><br>Sgt. Joe Iceman<br>Slovensko</td>
+					<td>{control emailFormSk}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+{/block}

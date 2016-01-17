@@ -1,7 +1,6 @@
 {if !isset($folder)}
 {?extract($data[$item['id']])?}
 {/if}
-{dump $folder}
 <h1>{$folder['name']}</h1>
 <div>
 {if isset($folder['text'])}{!$folder['text']}{/if}

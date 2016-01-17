@@ -5,16 +5,25 @@
     <meta name="Author" content="Martin Zadražil" >
     <meta name="Robots" content="all, index, follow" >
 
+    <link rel="stylesheet" type="text/css" href="{$baseUri}/css/frontend.css">
+		<link rel="stylesheet" type="text/css" href="http://cms.freetech.cz/bower_components/lightbox/css/lightbox.css">
+
 		<script src="http://cms.freetech.cz/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+		<script src="http://cms.freetech.cz/bower_components/lightbox/js/lightbox.min.js" type="text/javascript"></script>
 
 		<script src="http://cms.freetech.cz//coffee/ComponentJS/core.js" type="text/javascript"></script>
 		<script src="http://cms.freetech.cz//coffee/ComponentJS/event.js" type="text/javascript"></script>
 		<script src="http://cms.freetech.cz//coffee/ComponentJS/component.js" type="text/javascript"></script>
 		<script src="http://cms.freetech.cz//coffee/ComponentJS/document.js" type="text/javascript"></script>
 
-		<title>{$title}</title>
+		<script src="{$basePath}/coffee/script.js" type="text/javascript"></script>
+
+		<title>{$title} - 9th Illinois Cavalry Regiment</title>
 	</head>
   <body>
-  {block content}{/block}
-  </body>
+		{block content}{/block}
+		<script type="text/javascript">
+			images = ['{?echo implode("','", $images)?}']
+		</script>
+	</body>
 </html>
