@@ -1,0 +1,15 @@
+	{if $typeId == 1}
+		{include 'text.latte'}
+	{elseif $typeId == 2}
+		{include 'gallery.latte', 'folder' => $data[$item['id']]['folder'], 'url' => $data[$item['id']]['url']}
+	{elseif $typeId == 3}
+		{include 'articles.latte'}
+	{elseif $typeId == 4}
+		{include 'discography.latte'}
+	{elseif $typeId == 5}
+		{foreach $item['items'] as $itm}
+			{include 'containers.latte', 'typeId' => $itm['type_id'], 'item' => $itm}
+		{/foreach}
+	{elseif $typeId == 6}
+		{include 'discussion.latte'}
+	{/if}
