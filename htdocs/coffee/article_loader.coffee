@@ -5,8 +5,13 @@ class @ArticleLoader extends CJS.Component
 		super(parent, id)
 		@offset = 4
 		@blocked = no
+		@showLink = no
+
+	setShowLink: (@showLink) -> @
 
 	setMenuId: (@menuId) -> @
+
+	getFullUrl: (url) -> window.location.href.substr(0, window.location.href.length-5) + '/' + url + '.html'
 
 	run: ->
 		$(document).bind 'scroll', (event) =>
@@ -18,6 +23,7 @@ class @ArticleLoader extends CJS.Component
 		if response.length
 			@offset += 4
 			for article in response
-				html = article
+				html = article.text
+				html += '<a href="' + @getFullUrl(article.url) + '">Zobrazit celý článek</a>' if @showLink
 				$('#articles').append(html)
 			@blocked = no
