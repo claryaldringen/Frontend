@@ -1,11 +1,19 @@
 {?extract($data[$item['id']])?}
-<script src="{$basePath}/coffee/article_loader.js" type="text/javascript"></script>
 
-<div id="articles">
-{foreach $articles as $article}{!$article}{/foreach}
-</div>
+{if isset($article)}
+	{!$article}
+{else}
+	<script src="{$basePath}/coffee/article_loader.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-var articleLoader = new ArticleLoader();
-articleLoader.setBaseUrl({link Ajax:default}).setMenuId({$menuId}).run()
-</script>
+	<div id="articles">
+		{foreach $articles as $article}
+			{!$article->text}
+			{if !empty($length)}<a href="{$item['url']}/{$article->url}.html">Zobrazit celý článek</a>{/if}
+		{/foreach}
+	</div>
+
+	<script type="text/javascript">
+	var articleLoader = new ArticleLoader();
+	articleLoader.setBaseUrl({link Ajax:default}).setMenuId({$menuId}).run()
+	</script>
+{/if}
