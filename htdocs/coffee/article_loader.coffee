@@ -3,7 +3,7 @@ class @ArticleLoader extends CJS.Component
 
 	constructor: (parent, id) ->
 		super(parent, id)
-		@offset = 4
+		@offset = 8
 		@blocked = no
 		@showLink = no
 
@@ -21,7 +21,7 @@ class @ArticleLoader extends CJS.Component
 
 	loadArticleResponse: (response) ->
 		if response.length
-			@offset += 4
+			@offset += 8
 			for article in response
 				html = article.text
 				html += '<a href="' + @getFullUrl(article.url) + '">Zobrazit celý článek</a>' if @showLink
