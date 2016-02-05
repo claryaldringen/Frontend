@@ -1,5 +1,5 @@
 parameters:
-    siteId: 7
+    siteId: 2
 
 dibi:
 	host: db
@@ -10,4 +10,3 @@ dibi:
 
 application:
 	catchExceptions: false
-

@@ -1,10 +1,15 @@
 {layout '@layout.latte'}
 
 {block content}
-	{include 'menu.latte', 'menu' => $items, 'url' => ''}
-	{if empty($isSinglePage)}
-		{include 'containers.latte'}
-	{else}
-		{include 'single.latte'}
-	{/if}
+	<div class="main">
+		<div class="header">
+			<img class="title" src="/images/title.png">
+			<div class="left_panel">
+				<img src="/images/brackett.jpg" width="160" class="brackett">
+					{include 'menu.latte', 'menu' => $items, 'url' => ''}
+			</div>
+		</div>
+		<div class="content">	{include 'containers.latte'}
+		</div>
+	</div>
 {/block}

@@ -1,6 +1,6 @@
-<ul>
-{foreach $menu['items'] as $menuItem}
-	{if $menuItem['visibility'] == 'visible'}
+<ul class="menu">
+{foreach $menu['items'] as $item}
+	{if $item['visibility'] == 'visible'}
 		<li>
 		{if empty($isSinglePage)}
 			{var $link = $url . '/' . $menuItem['url'] }
