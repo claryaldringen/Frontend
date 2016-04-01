@@ -19,39 +19,55 @@ class RouterFactory
 	public function createRouter()
 	{
 		$router = new Routers\RouteList();
+
         if ($this->container->parameters['consoleMode']) {
             $router[] = new Routers\CliRouter(['action' => 'Cli:default']);
         } else {
 
-            $router[] = new Routers\Route('/sitemap.xml', array(
-                'presenter' => 'Frontend',
-                'action' => 'sitemap',
-            ));
+		$router[] = new Routers\Route('/sitemap.xml',array(
+			'presenter' => 'Frontend',
+			'action' => 'sitemap',
+		));
 
-            $router[] = new Routers\Route('/ajax/', array(
-                'presenter' => 'Ajax',
-                'action' => 'default',
-            ));
+		$router[] = new Routers\Route('/ajax/',array(
+			'presenter' => 'Ajax',
+			'action' => 'default',
+		));
 
-            $router[] = new Routers\Route('/download/<hash>', array(
-                'presenter' => 'Frontend',
-                'action' => 'download',
-            ));
+		$router[] = new Routers\Route('/download/<hash>',array(
+			'presenter' => 'Frontend',
+			'action' => 'download',
+		));
 
-            $router[] = new Routers\Route('/admin/', array(
-                'presenter' => 'Frontend',
-                'action' => 'admin',
-            ));
+		$router[] = new Routers\Route('/admin/',array(
+			'presenter' => 'Frontend',
+			'action' => 'admin',
+		));
 
-            $router[] = new Routers\Route('/<url .+>.html', array(
-                'presenter' => 'Frontend',
-                'action' => 'default'
-            ));
+		$router[] = new Routers\Route('/<url kontakt|kontakty|email|contact|contacts|e-mail>.html',array(
+			'presenter' => 'Frontend',
+			'action' => 'contact'
+		));
 
-            $router[] = new Routers\Route('', array(
-                'presenter' => 'Frontend',
-                'action' => 'default'
-            ));
+		$router[] = new Routers\Route('/<url uvod>.html',array(
+			'presenter' => 'Frontend',
+			'action' => 'home'
+		));
+
+		$router[] = new Routers\Route('/<url koncerty>.html',array(
+			'presenter' => 'Frontend',
+			'action' => 'concerts'
+		));
+
+		$router[] = new Routers\Route('/<url .+>.html',array(
+				'presenter' => 'Frontend',
+				'action' => 'default'
+		));
+
+		$router[] = new Routers\Route('',array(
+				'presenter' => 'Frontend',
+				'action' => 'home'
+		));
         }
 
 		return $router;

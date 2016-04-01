@@ -7,6 +7,7 @@ class @Discussion extends CJS.Component
 		@comment = {comment_id: null, name: '', caption: '', text: ''}
 		@scroll = 0
 		@myIds = null
+		@opened = []
 
 	setMenuId: (@menuId) -> @
 
@@ -70,6 +71,10 @@ class @Discussion extends CJS.Component
 			else if  @comment.text is ''
 				alert('Vložte prosím text zprávy.')
 			else @save()
+		if element.hasClass('doShowReply')
+			@opened.push(element.dataset.id*1)
+			@render()
+
 
 	beforeRender: ->
 		@scroll = document.querySelector('.comments-container')?.scrollTop;
@@ -79,9 +84,9 @@ class @Discussion extends CJS.Component
 
 	getFormHtml: ->
 		html = '<div class="comment-form"><table>'
-		html += '<tr><td>Jméno:&nbsp;</td><td><input type="text" class="form-control input-sm doChangeName" value="' + @comment.name + '"></td></tr>'
-		html += '<tr><td>Titulek:&nbsp;</td><td><input type="text" class="form-control input-sm doChangeCaption" value="' + @comment.caption + '"></td></tr>'
-		html += '<tr><td colspan="2">Text sdělení:<br><textarea class="form-control input-sm doChangeText">' + @comment.text + '</textarea></td></tr>'
+		html += '<tr><td>Jméno:&nbsp;</td><td><input type="text" class="comment-input doChangeName" value="' + @comment.name + '"></td></tr>'
+		html += '<tr><td>Titulek:&nbsp;</td><td><input type="text" class="comment-input doChangeCaption" value="' + @comment.caption + '"></td></tr>'
+		html += '<tr><td colspan="2">Text sdělení:<br><textarea class="comment-textarea doChangeText">' + @comment.text + '</textarea></td></tr>'
 		html += '<tr><td class="center"><button class="btn btn-default btn-sm doCancel">Zrušit</button></td>'
 		html += '<td class="center"><button class="btn btn-primary btn-sm doSubmit">Odeslat komentář</button></td></tr>'
 		html += '</table></div>'
@@ -89,7 +94,7 @@ class @Discussion extends CJS.Component
 	getCommentHtml: (comment) ->
 		html = '<li><div class="comment">'
 		html += '<span class="username">' + comment.name + '</span>'
-		html += '<h4>' + comment.caption + '</h4>'
+		html += '<h3>' + comment.caption + '</h3>'
 		html += comment.text
 		if comment.id*1 is @comment.comment_id*1
 			@comment.caption = 'Re: ' + comment.caption
@@ -101,16 +106,26 @@ class @Discussion extends CJS.Component
 				html += '<td><button data-id="' + comment.id + '" class="btn btn-primary btn-sm doEdit">Editovat</button></td>'
 				html += '<td><button data-id="' + comment.id + '" class="btn btn-danger btn-sm doRemove">Odstranit</button></td>'
 			html += '</tr></table>'
-		html += '</div><ul>'
-		html += @getCommentHtml(comm) for comm in comment.comments
-		html += '</ul>'
+		html += '</div>'
+		if comment.comments? and comment.comments.length
+			if comment.id in @opened
+				html += '<ul>'
+				html += @getCommentHtml(comm) for comm in comment.comments
+				html += '</ul>'
+			else
+				html += '<a class="doShowReply" data-id="' + comment.id + '">Zobrazit '
+				if comment.comments.length == 1
+					html += comment.comments.length + ' odpověď...'
+				else
+					html += comment.comments.length + ' odpovědi...'
+				html += comment.comments.length + ' odpovědí...' if comment.comments.length > 4
+				html += '</a>'
 		html += '</li>'
 
 	getHtml: ->
-		html = '<div style="height: ' + (@getHeight() - 42) + 'px;" class="comments-container"><ul>'
+		html = '<div class="comments-container"><ul>'
 		for comment in @comments
 			html += @getCommentHtml(comment)
 		html += '</ul>'
 		html += @getFormHtml() if not @comment.comment_id? or @comment.comment_id is 0
 		html += '</div>'
-

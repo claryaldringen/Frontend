@@ -2,19 +2,17 @@
 {foreach $menu['items'] as $menuItem}
 	{if $menuItem['visibility'] == 'visible'}
 		<li>
-		{if empty($isSinglePage)}
-			{var $link = $url . '/' . $menuItem['url'] }
-			{if $menuItem['id'] == $menuId}
-				<span>{$menuItem['text']}</span>
-			{else}
-				<a href="{$link}.html">{$menuItem['text']}</a>
-			{/if}
-			{if isset($menuItem['items'])}
-				{include 'menu.latte', menu => $menuItem, url => $link}
-			{/if}
+		{if !empty($absolute)}
+			{var $parts = explode('/', $url)}
+			{? $parts[count($parts)-1] = $item['url'] ?}
+			{var $link = implode('/', $parts)}
 		{else}
-			{var $link = $url . '#' . $menuItem['url'] }
-			<a href="{$link}">{$menuItem['text']}</a>
+			{var $link = $url . '/' . $item['url'] }
+		{/if}
+		{if $item['id'] == $menuId}
+			<a href="{$link}.html" class="active">{$item['text']}</a>
+		{else}
+			<a href="{$link}.html">{$item['text']}</a>
 		{/if}
 		</li>
 	{/if}

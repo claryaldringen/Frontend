@@ -1,0 +1,60 @@
+{layout '@layout.latte'}
+
+{block content}
+	<script src="{$basePath}/coffee/article_loader.js" type="text/javascript"></script>
+	<a href="https://www.facebook.com/groups/44492391363/?fref=ts" target="_blank">
+		<img src="/images/facebook_32.png" width="32" height="32" class="social">
+	</a>
+	<a href="{$baseUri}"><img src="/images/asonance.png" class="logo" style=""></a>
+	<div id="banner" class="banner"></div>
+	<div id="menu">
+		<div class="upmenu"></div>
+		<div class="menu">
+		<a href="#" onclick="$('.menu ul').animate({l}width:'toggle'{r},350);$(this).toggle()" class="minimenu">Menu</a>
+		{include 'menu.latte', 'menu' => $items, 'url' => ''}
+		<div class="clear"></div>
+		</div>
+		<div class="downmenu"></div>
+	</div>
+  <div class="box"><h1>{$title}</h1></div>
+  {if isset($concerts[date('Y')])}
+  	{foreach $concerts[date('Y')] as $concert}
+			<div class="box concertbox">
+			{*if !empty($concert->image)}<img src="http://cms.freetech.cz/images/userimages/medium/{$concert->image}.jpg">{/if*}
+			<h3>{$concert->name}</h3>
+			{$concert->place}<br>
+			{if date('H', strtotime($concert->start_time)) > '02'}
+				{$concert->start_time|date:'d.m.Y H:i'}
+			{else}
+				{$concert->start_time|date:'d.m.Y'}
+			{/if}
+			<br>
+			{if !empty($concert->text)}{!$concert->text}{/if}
+			<br></div>
+		{/foreach}
+	{/if}
+	<div style="clear: both;"></div>
+	<div id="articles">
+		{foreach $concerts as $year => $concert}
+			{if $year < date('Y')}
+				<div class="box">
+					<h2>Akce v roce {$year}</h2>
+					<ol>
+					{foreach $concert as $event}
+						<li><b>{$event->start_time|date:'d.m.Y'}</b> - {$event->start_time|date:'H:i'}, {$event->place}</li>
+					{/foreach}
+					</ol>
+				</div>
+			{/if}
+		{/foreach}
+		{foreach $articles as $article}
+			<div class="box">{!$article->text}</div>
+			{if !empty($length)}<a href="{$item['url']}/{$article->url}.html" class="doShowReply">Zobrazit celý článek</a>{/if}
+		{/foreach}
+	</div>
+
+	<script type="text/javascript">
+	var articleLoader = new ArticleLoader();
+	articleLoader.setBaseUrl({link Ajax:default}).setMenuId({$menuId}).run()
+	</script>
+{/block}

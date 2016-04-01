@@ -1,10 +1,19 @@
 {layout '@layout.latte'}
 
 {block content}
-	{include 'menu.latte', 'menu' => $items, 'url' => ''}
-	{if empty($isSinglePage)}
-		{include 'containers.latte'}
-	{else}
-		{include 'single.latte'}
-	{/if}
+	<a href="https://www.facebook.com/groups/44492391363/?fref=ts" target="_blank">
+		<img src="/images/facebook_32.png" width="32" height="32" class="social">
+	</a>
+	<a href="{$baseUri}"><img src="/images/asonance.png" class="logo" style=""></a>
+	<div id="banner" class="banner"></div>
+	<div id="menu">
+		<div class="upmenu"></div>
+		<div class="menu">
+		<a href="#" onclick="$('.menu ul').animate({l}width:'toggle'{r},350);$(this).toggle()" class="minimenu">Menu</a>
+		{include 'menu.latte', 'menu' => $items, 'url' => ''}
+		<div class="clear"></div>
+		</div>
+		<div class="downmenu"></div>
+	</div>
+	{include 'containers.latte'}
 {/block}

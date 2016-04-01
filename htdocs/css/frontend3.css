@@ -1,0 +1,99 @@
+
+.banner{
+    height: 15%;
+}
+
+.album {
+    width: 94%;
+    padding-bottom: 4%;
+}
+
+.concertbox,.left,.right{
+    width: 94%;
+}
+
+.arrows{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.memebers{
+    width: 94%;
+}
+
+.history{
+    width: 94%;
+}
+
+.album-opened,.album-title,.album-songs {
+    width: 94%;
+}
+
+.album-songs table{
+    width: 90%;
+}
+
+.td-text {
+    display: none;
+}
+
+.video{
+    display: inline-block;
+    width: 420px;
+    margin: 1%;
+}
+
+.video-iframe{
+    width: 420px;
+    height: 315px;
+}
+
+.bckg1{
+    background: url('/images/banners/asoweb1s.jpg') no-repeat;
+}
+.bckg2{
+    background: url('/images/banners/asoweb2s.jpg') no-repeat;
+}
+.bckg3{
+    background: url('/images/banners/asoweb3s.jpg') no-repeat;
+}
+.bckg4{
+    background: url('/images/banners/asoweb4s.jpg') no-repeat;
+}
+.bckg5{
+    background: url('/images/banners/asoweb5s.jpg') no-repeat;
+}
+.bckg6{
+    background: url('/images/banners/asoweb6s.jpg') no-repeat;
+}
+.bckg7{
+    background: url('/images/banners/asoweb7s.jpg') no-repeat;
+}
+
+.logo{
+    height: 13%;
+}
+
+.minimenu{
+    display: block;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #000000;
+    font-family: Times;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 0 1% 0 0;
+    margin-left: 3%;
+}
+
+.minimenu:first-letter {
+     font-size: 120%;
+}
+
+.menu ul{
+    display: none;
+}
+
+.menu ul li{
+    float: none;
+}

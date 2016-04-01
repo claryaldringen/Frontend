@@ -1,0 +1,229 @@
+
+body{
+    font-size: 36px;
+}
+
+p{
+    font-size: 16px;
+}
+
+h1{
+    font-size: 64px;
+}
+
+h2{
+    font-size: 38px;
+    padding: 20px 0px;
+}
+
+h3 {
+    font-size: 42px;
+}
+
+label{
+    font-size: 46px;
+}
+
+.menu ul{
+    display: none;
+}
+
+.menu ul li{
+    font-size: 36px;
+    padding: 10px 15px;
+    float: none;
+}
+
+.minimenu{
+    display: block;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #000000;
+    font-family: Times;
+    font-size: 48px;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 0 1% 0 0;
+    margin-left: 3%;
+}
+
+.minimenu:first-letter {
+    font-size: 120%;
+}
+
+
+.banner{
+    height: 10%;
+}
+
+.album {
+    width: 94%;
+    padding-bottom: 4%;
+    font-size: 36px;
+}
+
+.album h2{
+    padding: 0px;
+    font-size: 48px;
+}
+
+.album-title h1{
+    font-size: 48px;
+}
+
+.album-cart{
+    width: 96px;
+}
+
+.song-cart{
+    width: 72px;
+}
+
+.concertbox {
+    min-height: 500px;
+    padding-bottom: 10px;
+}
+
+.concertbox,.left,.right{
+    width: 94%;
+    font-size: 36px;
+}
+
+.memebers{
+    width: 94%;
+}
+
+.memebers img{
+    width: 412px !important;
+}
+
+.memebers td{
+    vertical-align: top;
+    padding: 24px 0;
+    font-size: 46px;
+}
+
+.memebers p{
+    font-size: 46px;
+    margin: 0
+}
+
+.history{
+    width: 94%;
+}
+
+.album-opened,.album-title,.album-songs {
+    width: 94%;
+}
+
+.album-songs table{
+    width: 90%;
+}
+
+.td-text {
+    display: none;
+}
+
+.video{
+    width: 96%;
+}
+
+input[type="text"],input[type="number"],textarea {
+    font-size: 56px;
+    width: 100%;
+    padding: 18px 12px;
+}
+
+textarea{
+    height: 240px;
+}
+
+input.button, button{
+    font-size: 36px;
+    margin: 10px;
+    padding: 18px 12px;
+}
+
+#concert{
+    margin-top: -78px;
+}
+
+.arrows{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.concert_frame{
+    height: 400px;
+}
+
+.concert, .hp-article, .video{
+    font-size: 46px;
+}
+
+.hp-article p, .concert p{
+    font-size: 46px;
+    margin: 2px 0px;
+}
+
+.video{
+    display: inline-block;
+    width: 640px;
+    margin: 5%;
+}
+
+.video-iframe{
+    width: 640px;
+    height: 480px;
+}
+
+.logo{
+    height: 8%;
+}
+
+legend{
+    font-size: 48px;
+}
+
+fieldset table td{
+    padding: 18px 0px;
+}
+
+.comment-form table{
+    font-size: 46px;
+}
+
+.username {
+    font-size: 20px;
+}
+
+#articles{
+    font-size: 14px;
+}
+
+#articles ol{
+    margin-left: 46px;
+}
+
+#articles li{
+    font-size: 14px;
+}
+
+#articles p{
+    font-size: 14px;
+}
+
+.comment{
+    font-size: 16px;
+}
+
+.comment h3{
+    font-size: 20px;
+}
+
+.title ul li{
+    padding-right: 10%;
+}
+
+.title ul li a{
+    font-size: 56px;
+}

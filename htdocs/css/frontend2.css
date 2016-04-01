@@ -1,0 +1,52 @@
+
+.menu ul li{
+    padding: 5px;
+}
+
+.news{
+    float: none;
+    width: 94%;
+}
+
+.album {
+    width: 44%;
+    min-height: 20em;
+}
+
+.concertbox{
+    width: 44%;
+}
+
+.videos1, .videos2{
+    margin-right: 2%;
+}
+
+fieldset{
+    width: 92%;
+}
+
+.address, .recapitulation{
+    width: 92%;
+}
+
+.bckg1{
+    background: url('/images/banners/asoweb1m.jpg') no-repeat;
+}
+.bckg2{
+    background: url('/images/banners/asoweb2m.jpg') no-repeat;
+}
+.bckg3{
+    background: url('/images/banners/asoweb3m.jpg') no-repeat;
+}
+.bckg4{
+    background: url('/images/banners/asoweb4m.jpg') no-repeat;
+}
+.bckg5{
+    background: url('/images/banners/asoweb5m.jpg') no-repeat;
+}
+.bckg6{
+    background: url('/images/banners/asoweb6m.jpg') no-repeat;
+}
+.bckg7{
+    background: url('/images/banners/asoweb7m.jpg') no-repeat;
+}

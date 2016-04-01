@@ -1,0 +1,68 @@
+{layout '@layout.latte'}
+
+{block content}
+	<a href="https://www.facebook.com/groups/44492391363/?fref=ts" target="_blank">
+		<img src="/images/facebook_32.png" width="32" height="32" class="social">
+	</a>
+	<a href="{$baseUri}"><img src="/images/asonance.png" class="logo" style=""></a>
+	<div id="banner" class="banner"></div>
+	<div id="menu">
+		<div class="upmenu"></div>
+		<div class="menu">
+		<a href="#" onclick="$('.menu ul').animate({l}width:'toggle'{r},350);$(this).toggle()" class="minimenu">Menu</a>
+		{include 'menu.latte', 'menu' => $items, 'url' => ''}
+		<div class="clear"></div>
+		</div>
+	<div class="downmenu"></div>
+	</div>
+	{if !empty($articles)}
+		<div class="box news">
+			<h1>Aktuálně</h1>
+			{foreach $articles as $article}<div class="hp-article">{!$article->text}</div>{/foreach}
+		</div>
+	{/if}
+	<div class="box {if !empty($articles)}concerts1{else}concerts2{/if}">
+		<h1>Koncerty</h1>
+		<div id="concert"></div>
+	</div>
+	<div class="box {if !empty($articles)}videos1{else}videos2{/if}">
+		<h1>Videa</h1>
+		<div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/H1Y415rKbCY?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Asi tě mám ráda
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/p3tkPN3bBjI?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Bannockburn
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/S5rPACWg-_s?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Království Keltů
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/x5_iwedYLLU?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Van Diemenova zem
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/aqof1RDQ-zI?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Dva havrani
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/9cFihipLaPk?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Čarodejnice z Amesbury
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/G9aenXLHADc?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Dva havrani
+			</div>
+			<div class="video">
+				<iframe class="video-iframe" src="https://www.youtube.com/embed/xvgYoawfrTQ?rel=0" frameborder="0" allowfullscreen></iframe><br>
+				Má drahá matko
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Concert.getInstance().setBaseUrl({link Ajax:default}).setMenuId({$item['id']});
+	</script>
+{/block}

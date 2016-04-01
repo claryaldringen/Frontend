@@ -1,35 +1,47 @@
 {if !isset($folder)}
 {php extract($data[$item['id']])?}
 {/if}
-<h1>{$folder['name']}</h1>
-<div>
-{if isset($folder['text'])}{$folder['text']|noescape}{/if}
+<div class="box">
+	<h1>{$title}</h1>
+	<h2>{$folder['name']}</h2>
 </div>
-{if isset($folder['folders'])}
-	{foreach $folder['folders'] as $folderItem}
-		{if isset($folderItem['images'][0]) }
-		<a href="/{$url}/{$folderItem['url']}.html" class="image">
-			<img src="http://{$adminHost}/images/userimages/small/{$folderItem['images'][0]['file']}">
-			<br>
-			<span>{$folderItem['name']}</span>
-		</a>
-		{/if}
-	{/foreach}
-{/if}
-
-{if isset($folder['images'])}
-	{foreach $folder['images'] as $image}
-		{if $image['type'] == 'general'}
-			<a href="{plink download, 'hash' => $image['file']}">
-				<span>{$image['name']}</span>
+<div class="box gallery">
+	<div>
+	{if isset($folder['text'])}{!$folder['text']}{/if}
+	</div>
+	{if isset($folder['folders'])}
+		{var $sort = []}
+		{foreach $folder['folders'] as $item}
+			{? $sort[] = $item['sort_key']; }
+		{/foreach}
+		{? array_multisort($sort, $folder['folders']); }
+		{foreach $folder['folders'] as $item}
+			{if isset($item['images'][0]) }
+			<a href="/{$url}/{$item['url']}.html" class="folder">
+				<img src="http://{$adminHost}/images/userimages/medium/{$item['images'][0]['file']}">
+				<br>
+				<h3>{$item['name']}</h3>
 			</a>
-		{else}
-		<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-1" data-title="{$image['name']}">
-			<img src="http://{$adminHost}/images/userimages/small/{$image['file']}">
-			<br>
-			<span>{$image['name']}</span>
-		</a>
-		{/if}
-	{/foreach}
-{/if}
-<div style="clear: both;"></div>
+			{/if}
+		{/foreach}
+	{/if}
+
+	{if isset($folder['images'])}
+		{foreach $folder['images'] as $image}
+			{if empty($image['temp'])}
+				{if $image['type'] == 'general'}
+					<a href="{plink download, 'hash' => $image['file']}">
+						<span>{$image['name']}</span>
+					</a>
+				{else}
+				<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-1" data-title="{$image['name']}">
+					<img src="http://{$adminHost}/images/userimages/small/{$image['file']}">
+					{*<br>
+					<span>{$image['name']}</span>*}
+				</a>
+				{/if}
+			{/if}
+		{/foreach}
+	{/if}
+	<div style="clear: both;">&nbsp;</div>
+</div>

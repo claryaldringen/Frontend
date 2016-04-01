@@ -1,0 +1,68 @@
+
+body,label,input,textarea{
+    font-size: 24px;
+}
+
+h3,legend{
+    font-size: 26px;
+}
+
+h2{
+    font-size: 32px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+#articles,.comment{
+    font-size: 14px;
+}
+
+.history{
+    font-size: 24px;
+}
+
+.menu{
+    height: 104px;
+}
+
+.menu ul li{
+    font-size: 24px;
+    padding: 8px 16px;
+}
+
+.banner{
+    height: 10%;
+}
+
+.album-songs td{
+    font-size: 24px;
+    padding: 4px 0;
+}
+
+.td-text{
+    display: none;
+}
+
+.album-cart{
+    width: 64px;
+}
+
+.comment-form td{
+    font-size: 24px;
+}
+
+.logo{
+    height: 8%;
+}
+
+input.button, button{
+    font-size: 26px;
+    margin: 6px;
+    padding: 12px 6px;
+}
+
+.username {
+    font-size: 14px;
+}
