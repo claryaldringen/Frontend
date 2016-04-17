@@ -2,5 +2,9 @@
 
 {block content}
 	{include 'menu.latte', 'menu' => $items, 'url' => ''}
-	{include 'containers.latte'}
+	{if empty($isSinglePage)}
+		{include 'containers.latte'}
+	{else}
+		{include 'single.latte'}
+	{/if}
 {/block}

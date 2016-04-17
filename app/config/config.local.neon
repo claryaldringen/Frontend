@@ -1,11 +1,15 @@
 parameters:
-    siteId: 3
+    siteId: 7
     adminHost: cms.dev
     language: 36
 
 dibi:
-	host: clary
+	host: localhost
 	username: root
 	password:
 	database: 318_cms
 	lazy: TRUE
+
+nette:
+    application:
+        catchExceptions: false

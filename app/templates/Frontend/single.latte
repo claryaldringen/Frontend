@@ -1,0 +1,19 @@
+{foreach $items['items'] as $item}
+	{if $item['visibility'] == 'visible'}
+		{if $item['type_id'] == 1}
+			{include 'text.latte', 'item' => $item}
+		{elseif $item['type_id'] == 2}
+			{include 'gallery-single.latte', 'item' => $item, 'folder' => $data[$item['id']]['folder'], 'url' => $data[$item['id']]['url']}
+		{elseif $item['type_id'] == 3}
+			{include 'articles.latte', 'item' => $item}
+		{elseif $item['type_id'] == 4}
+			{include 'discography.latte', 'item' => $item}
+		{elseif $item['type_id'] == 5}
+			{foreach $item['items'] as $itm}
+				{include 'containers.latte', 'typeId' => $itm['type_id'], 'item' => $itm}
+			{/foreach}
+		{elseif $item['type_id'] == 6}
+			{include 'discussion.latte', 'item' => $item}
+		{/if}
+	{/if}
+{/foreach}

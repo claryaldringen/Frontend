@@ -1,0 +1,18 @@
+{if !isset($folder)}
+{?extract($data[$item['id']])?}
+{/if}
+{foreach $folder['folders'] as $fold}
+	{if isset($fold['images'])}
+		{$fold['name']}
+		{if isset($fold['text'])}{!$fold['text']}{/if}
+		{foreach $fold['images'] as $i => $image}
+			{if $i == 0}
+			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
+			<img src="http://{$adminHost}/images/userimages/medium/{$image['file']}">
+			</a>
+			{else}
+			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}"></a>
+			{/if}
+		{/foreach}
+	{/if}
+{/foreach}
