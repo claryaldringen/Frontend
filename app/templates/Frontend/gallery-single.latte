@@ -1,18 +1,46 @@
 {if !isset($folder)}
 {php extract($data[$item['id']])?}
 {/if}
-{foreach $folder['folders'] as $fold}
-	{if isset($fold['images'])}
-		{$fold['name']}
-		{if isset($fold['text'])}{$fold['text']|noescape}{/if}
-		{foreach $fold['images'] as $i => $image}
-			{if $i == 0}
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
-			<img src="http://{$adminHost}/images/userimages/medium/{$image['file']}">
-			</a>
-			{else}
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}"></a>
-			{/if}
-		{/foreach}
+<div class="row">
+{if !empty($folder['folders'])}
+	{foreach $folder['folders'] as $fold}
+		<div class="cols-sm-12 col-md-6">
+		{if isset($fold['images'])}
+			<h3>{$fold['name']}</h3>
+			<div class="row">
+				<div class="col-xs-6">
+					{foreach $fold['images'] as $i => $image}
+						{if $i == 0}
+								<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
+									<img src="http://{$adminHost}/images/userimages/large/{$image['file']}" class="col-md-12 img-thumbnail">
+								</a>
+						{else}
+							<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}"></a>
+						{/if}
+					{/foreach}
+				</div>
+				{if isset($fold['text'])}
+					<div class="col-xs-6 text-left">
+						{!$fold['text']}
+					</div>
+				{/if}
+			</div>
+		{/if}
+		</div>
+	{/foreach}
+{elseif !empty($folder['images'])}
+	{dump $data}
+	{if !empty($folder['text'])}
+		<div class="row"><div class="col-xs-12">{!$folder['text']}</div></div>
 	{/if}
-{/foreach}
+	<div class="row">
+	{foreach $folder['images'] as $i => $image}
+		<div class="col-xs-6 col-sm-4 col-md-3">
+			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" data-lightbox="image-{$folder['id']}" data-title="{$image['name']}">
+				<img src="http://{$adminHost}/images/userimages/large/{$image['file']}" class="img-thumbnail thumbnail">
+			</a>
+		</div>
+	{/foreach}
+	</div>
+{/if}
+</div>

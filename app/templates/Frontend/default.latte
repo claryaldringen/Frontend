@@ -1,7 +1,9 @@
 {layout '@layout.latte'}
 
 {block content}
+	<nav class="navbar navbar-default navbar-fixed-top">
 	{include 'menu.latte', 'menu' => $items, 'url' => ''}
+	</nav>
 	{if empty($isSinglePage)}
 		{include 'containers.latte'}
 	{else}

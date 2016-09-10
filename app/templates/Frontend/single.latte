@@ -1,19 +1,38 @@
-{foreach $items['items'] as $item}
-	{if $item['visibility'] == 'visible'}
-		{if $item['type_id'] == 1}
-			{include 'text.latte', 'item' => $item}
-		{elseif $item['type_id'] == 2}
-			{include 'gallery-single.latte', 'item' => $item, 'folder' => $data[$item['id']]['folder'], 'url' => $data[$item['id']]['url']}
-		{elseif $item['type_id'] == 3}
-			{include 'articles.latte', 'item' => $item}
-		{elseif $item['type_id'] == 4}
-			{include 'discography.latte', 'item' => $item}
-		{elseif $item['type_id'] == 5}
-			{foreach $item['items'] as $itm}
-				{include 'containers.latte', 'typeId' => $itm['type_id'], 'item' => $itm}
-			{/foreach}
-		{elseif $item['type_id'] == 6}
-			{include 'discussion.latte', 'item' => $item}
+{foreach $items['items'] as $index => $item}
+		<a name="{$item['url']}"></a>
+		{if $index}
+			<div class="container">
+			<div><h1>&nbsp;</h1></div>
+			<h1>{$item['text']}</h1>
 		{/if}
-	{/if}
+		{if $item['visibility'] == 'visible'}
+			{if $item['type_id'] == 1}
+				{include 'text.latte', 'item' => $item}
+			{elseif $item['type_id'] == 2}
+				{include 'gallery-single.latte', 'item' => $item, 'folder' => $data[$item['id']]['folder'], 'url' => $data[$item['id']]['url']}
+			{elseif $item['type_id'] == 3}
+				{include 'articles.latte', 'item' => $item}
+			{elseif $item['type_id'] == 4}
+				{include 'discography.latte', 'item' => $item}
+			{elseif $item['type_id'] == 5}
+				{foreach $item['items'] as $itm}
+					{include 'containers.latte', 'typeId' => $itm['type_id'], 'item' => $itm}
+				{/foreach}
+			{elseif $item['type_id'] == 6}
+				{include 'discussion.latte', 'item' => $item}
+			{/if}
+		{/if}
+		{if $index}</div>{/if}
 {/foreach}
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				Copyright &copy; 2015 - {date('Y')} Stáj Karlštejn
+			</div>
+			<div class="col-md-6">
+				Vytvoření a správa: Martin Zadražil (<a href="http://www.freetech.cz">freetech.cz</a>)
+			</div>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,152 @@
+@font-face {
+    font-family: brandfont;
+    src: url('/fonts/mochary.ttf');
+}
+
+body{
+    /*color: #000000;*/
+}
+
+.navbar-brand {
+    font-family: brandfont;
+    color: #000000 !important;
+    font-size: 42px;
+}
+
+.jumbotron {
+    margin-top: 50px;
+    background: url('/images/jumbotron1.png');
+    background-size: cover;
+    height: 100%;
+}
+
+.backgroundimg {
+    background-size: cover;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#back1 {
+    background: url('/images/jumbotron5.png') no-repeat center fixed;
+}
+
+#back2 {
+    background: url('/images/jumbotron2.png') no-repeat center fixed;
+}
+
+#back3 {
+    background: url('/images/jumbotron3.png') no-repeat center fixed;
+}
+
+#back4 {
+    background: url('/images/jumbotron4.png') no-repeat center fixed;
+}
+
+#back5 {
+    background: url('/images/jumbotron1.png') no-repeat center fixed;
+}
+
+@keyframes backgroundchangeFadeInOut {
+    0% {
+        opacity:1;
+    }
+    17% {
+        opacity:1;
+    }
+    25% {
+        opacity:0;
+    }
+    92% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes backgroundchangeFadeInOut {
+    0% {
+        opacity:1;
+    }
+    17% {
+        opacity:1;
+    }
+    25% {
+        opacity:0;
+    }
+    92% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+#backgroundchange div:nth-of-type(1) {
+    animation-delay: 25s;
+    -webkit-animation-delay: 25s;
+}
+#backgroundchange div:nth-of-type(2) {
+    animation-delay: 20s;
+    -webkit-animation-delay: 20s;
+}
+#backgroundchange div:nth-of-type(3) {
+    animation-delay: 15s;
+    -webkit-animation-delay: 15s;
+}
+#backgroundchange div:nth-of-type(4) {
+    animation-delay: 10s;
+    -webkit-animation-delay: 10s;
+}
+
+#backgroundchange div:nth-of-type(5) {
+    animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+}
+
+#backgroundchange div {
+    animation-name: backgroundchangeFadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 25s;
+}
+
+.headertext{
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    z-index: 10;
+    color: #FFFFFF;
+    text-shadow: #000000 1px 1px;
+}
+
+.container{
+    text-align: center;
+    font-size: 20px;
+    /*font-size: 1.5vw*/
+}
+
+.footer {
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 25px;
+    background-color: #1b1b1b;
+    background-image: -moz-linear-gradient(top, #222222, #111111);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+    background-image: -webkit-linear-gradient(top, #222222, #111111);
+    background-image: -o-linear-gradient(top, #222222, #111111);
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}
+
+.thumbnail{
+    margin-top: 16px;
+}
+
+p{
+    text-align: left;
+}

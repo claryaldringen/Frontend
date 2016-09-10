@@ -1,11 +1,3 @@
 parameters:
     siteId: 5
-    adminHost: cms.dev
-    language: 36
-
-dibi:
-	host: localhost
-	username: root
-	password:
-	database: 318_cms
-	lazy: TRUE
+    isSinglePage: true
