@@ -1,0 +1,96 @@
+@font-face {
+    font-family: nexarust;
+    src: url('/fonts/janda.ttf');
+}
+
+body{
+    font-size: 24px;
+    text-align: center;
+    color: #555;
+    font-family: Verdana;
+}
+
+p {
+    text-align: left;
+}
+
+img{
+    margin-right: 16px;
+    margin-bottom: 16px;
+    border: solid 1px #555;
+    border-radius: 8px;
+}
+
+.navbar-brand{
+    font-family: nexarust;
+    color: #000033 !important;
+    font-size: 32px;
+    margin-top: 4px;
+}
+
+.jumbotron{
+    background: url('/images/header4.jpg') no-repeat center top fixed;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    height: 100%;
+}
+
+.headtext{
+    font-family: nexarust;
+    padding-top: 10%;
+    text-align: left;
+    color: #000033;
+}
+
+.headtext h1{
+    line-height: 150%;
+    font-weight: lighter;
+    font-style: italic;
+    font-size: 48px;
+}
+
+.article {
+    min-height: 600px;
+    position: relative;
+}
+
+.article .inner{
+    position: absolute;
+    text-align: left;
+    width: 66%;
+    margin: 0;
+}
+
+.even:not(.end) {
+    background: url('/images/left1.png') no-repeat 10% 60%;
+    background-size: 25%;
+}
+
+.odd:not(.end){
+    background: url('/images/right1.png') no-repeat 85% 60%;
+    background-size: 25%;
+}
+
+.even .inner{
+    right: 0px;
+}
+
+.odd .inner{
+    left: 0px;
+}
+
+.footer{
+    height: 18%;
+    background: url('/images/footer.png') no-repeat bottom center fixed;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: #FFFFFF;
+
+    text-align: left;
+    font-size: 18px;
+    text-shadow: #000033 1px 1px;
+}

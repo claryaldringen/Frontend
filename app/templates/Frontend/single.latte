@@ -1,4 +1,10 @@
-{foreach $items['items'] as $item}
+{foreach $items['items'] as $index => $item}
+	<a name="{$item['url']}"></a>
+	{if $index}
+		<div class="container">
+		<div><h1>&nbsp;</h1></div>
+		<h1>{$item['text']}</h1>
+	{/if}
 	{if $item['visibility'] == 'visible'}
 		{if $item['type_id'] == 1}
 			{include 'text.latte', 'item' => $item}
@@ -16,4 +22,24 @@
 			{include 'discussion.latte', 'item' => $item}
 		{/if}
 	{/if}
+	{if $index}</div>{/if}
 {/foreach}
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<br>
+				Copyright &copy; 2015 - {date('Y')} Dula Martina Šebestová
+				<br>
+				Vytvoření a správa: Martin Zadražil (<a href="http://www.freetech.cz">freetech.cz</a>)
+				<br>
+				Obraz na úvodní stránce: Milena Ebergényi (<a href="http://www.ebeart.cz">ebeart.cz</a>)
+			</div>
+			<div class="col-md-6">
+				<a href="https://www.facebook.com/Dula-Martina-Šebestová-347864415399846" target="_blank">
+					<img src="/images/facebook.png" style="height: 50%;margin: 14px;">
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>
