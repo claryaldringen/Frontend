@@ -18,7 +18,7 @@
 	</div>
   <div class="box"><h1>{$title}</h1></div>
   {if isset($concerts[date('Y')])}
-  	{foreach $concerts[date('Y')] as $concert}
+  	{foreach array_merge($concerts[date('Y')], isset($concerts[date('Y')+1]) ? $concerts[date('Y')+1] : array()) as $concert}
 			<div class="box concertbox">
 			{*if !empty($concert->image)}<img src="http://cms.freetech.cz/images/userimages/medium/{$concert->image}.jpg">{/if*}
 			<h3>{$concert->name}</h3>

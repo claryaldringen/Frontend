@@ -57,8 +57,9 @@ class FrontendPresenter extends cms\FrontendPresenter {
 		if(!empty($values['email']))$mail->setFrom($values['email']);
 		$mail->setSubject('Vzkaz ze stránek');
 		$mail->setBody($values['message']);
+		$mail->addAttachment('example.txt', var_export($this->context->getByType('Nette\Http\Request')->getHeaders(), true));
 		$mail->addTo('asonance@asonance.cz');
-		//$mail->addBcc('clary.aldringen@seznam.cz');
+		$mail->addBcc('clary.aldringen@seznam.cz');
 		$this->context->getService('mailer')->send($mail);
 		$this->flashMessage('Vaše zpráva byla odeslána.');
 		$this->redirect('this');
