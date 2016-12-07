@@ -94,3 +94,28 @@ img{
     font-size: 18px;
     text-shadow: #000033 1px 1px;
 }
+
+@media screen and (max-width: 1024px) {
+    .article:not(.end) {
+        min-height: 850px;
+    }
+
+    .article .inner{
+        width: 80%;
+    }
+
+    .even:not(.end) {
+        background: url('/images/left1.png') no-repeat 10% 100%;
+        background-size: 25%;
+    }
+
+    .odd:not(.end){
+        background: url('/images/right1.png') no-repeat 85% 100%;
+        background-size: 25%;
+    }
+
+    .jumbotron{
+        height: 600px;
+    }
+
+}
