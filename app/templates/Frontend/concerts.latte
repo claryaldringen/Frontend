@@ -10,7 +10,12 @@
 	<div id="menu">
 		<div class="upmenu"></div>
 		<div class="menu">
-		<a href="#" onclick="$('.menu ul').animate({l}width:'toggle'{r},350);$(this).toggle()" class="minimenu">Menu</a>
+		<a href="#" onclick="$('.menu ul').animate({l}width:'toggle'{r},350);$(this).toggle()" class="minimenu">
+			<div class="minimenuicon">
+				<hr><hr><hr>
+			</div>
+			Menu
+		</a>
 		{include 'menu.latte', 'menu' => $items, 'url' => ''}
 		<div class="clear"></div>
 		</div>

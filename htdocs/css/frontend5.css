@@ -1,28 +1,4 @@
 
-body,label,input,textarea{
-    font-size: 24px;
-}
-
-h3,legend{
-    font-size: 26px;
-}
-
-h2{
-    font-size: 32px;
-}
-
-h1 {
-    font-size: 36px;
-}
-
-#articles,.comment{
-    font-size: 14px;
-}
-
-.history{
-    font-size: 24px;
-}
-
 .menu{
     height: 104px;
 }
@@ -37,7 +13,6 @@ h1 {
 }
 
 .album-songs td{
-    font-size: 24px;
     padding: 4px 0;
 }
 
@@ -47,10 +22,6 @@ h1 {
 
 .album-cart{
     width: 64px;
-}
-
-.comment-form td{
-    font-size: 24px;
 }
 
 .logo{
@@ -63,6 +34,4 @@ input.button, button{
     padding: 12px 6px;
 }
 
-.username {
-    font-size: 14px;
-}
+

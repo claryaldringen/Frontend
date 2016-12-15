@@ -1,27 +1,23 @@
 
 body{
-    font-size: 36px;
-}
-
-p{
-    font-size: 16px;
-}
-
-h1{
-    font-size: 64px;
+    background-image: none;
+    overflow-x: hidden;
 }
 
 h2{
-    font-size: 38px;
     padding: 20px 0px;
 }
 
-h3 {
-    font-size: 42px;
+#menu{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 15;
 }
 
-label{
-    font-size: 46px;
+#banner{
+    margin: 32px 0 0 72px;
+    height: 120px;
 }
 
 .menu ul{
@@ -29,8 +25,7 @@ label{
 }
 
 .menu ul li{
-    font-size: 36px;
-    padding: 10px 15px;
+    padding: 5px 10px;
     float: none;
 }
 
@@ -39,10 +34,9 @@ label{
     text-decoration: none;
     text-shadow: 1px 1px 2px #000000;
     font-family: Times;
-    font-size: 48px;
     color: #ffffff;
     text-transform: uppercase;
-    padding: 0 1% 0 0;
+    padding: 5px 0 5px 0;
     margin-left: 3%;
 }
 
@@ -56,36 +50,34 @@ label{
 }
 
 .album {
-    width: 94%;
-    padding-bottom: 4%;
-    font-size: 36px;
+    width: 96%;
+    padding: 4% 0;
+}
+
+.album img{
+    max-height: 65%;
 }
 
 .album h2{
     padding: 0px;
-    font-size: 48px;
-}
-
-.album-title h1{
-    font-size: 48px;
 }
 
 .album-cart{
-    width: 96px;
+    width: 48px;
 }
 
 .song-cart{
     width: 72px;
 }
 
-.concertbox {
-    min-height: 500px;
-    padding-bottom: 10px;
+.concerts1{
+    margin-right: 2%;
 }
 
-.concertbox,.left,.right{
+.concertbox {
     width: 94%;
-    font-size: 36px;
+    height: auto;
+    float: none;
 }
 
 .memebers{
@@ -97,13 +89,10 @@ label{
 }
 
 .memebers td{
-    vertical-align: top;
-    padding: 24px 0;
-    font-size: 46px;
+    padding: 8px;
 }
 
 .memebers p{
-    font-size: 46px;
     margin: 0
 }
 
@@ -123,12 +112,7 @@ label{
     display: none;
 }
 
-.video{
-    width: 96%;
-}
-
 input[type="text"],input[type="number"],textarea {
-    font-size: 56px;
     width: 100%;
     padding: 18px 12px;
 }
@@ -138,92 +122,119 @@ textarea{
 }
 
 input.button, button{
-    font-size: 36px;
     margin: 10px;
     padding: 18px 12px;
 }
 
 #concert{
-    margin-top: -78px;
+    margin-top: 0px;
+    position: relative;
 }
 
 .arrows{
     text-align: right;
-    margin-bottom: 10px;
+    width: 75%;
+    position: absolute;
+    bottom: 10px;
 }
 
 .concert_frame{
-    height: 400px;
-}
-
-.concert, .hp-article, .video{
-    font-size: 46px;
+    height: 200px;
 }
 
 .hp-article p, .concert p{
-    font-size: 46px;
     margin: 2px 0px;
 }
 
 .video{
     display: inline-block;
-    width: 640px;
-    margin: 5%;
+    width: 280px;
 }
 
 .video-iframe{
-    width: 640px;
-    height: 480px;
+    width: 280px;
+    height: 210px;
 }
 
 .logo{
-    height: 8%;
-}
-
-legend{
-    font-size: 48px;
+    height: 64px;
+    top: 52px;
 }
 
 fieldset table td{
     padding: 18px 0px;
 }
 
-.comment-form table{
-    font-size: 46px;
-}
-
-.username {
-    font-size: 20px;
-}
-
-#articles{
-    font-size: 14px;
-}
-
-#articles ol{
-    margin-left: 46px;
-}
-
-#articles li{
-    font-size: 14px;
-}
-
-#articles p{
-    font-size: 14px;
-}
-
-.comment{
-    font-size: 16px;
-}
-
-.comment h3{
-    font-size: 20px;
-}
-
 .title ul li{
     padding-right: 10%;
+    font-size: 20px;
 }
 
-.title ul li a{
-    font-size: 56px;
+.doShowReply {
+    font-size: 20px;
+}
+
+.minimenuicon{
+    width: 22px;
+    float: left;
+    margin-right: 4px;
+}
+
+.minimenuicon hr{
+    margin: 4px 0px;
+}
+
+.social{
+    top: 0px;
+    right: 0px;
+    margin: 3px;
+    position: fixed;
+    z-index: 16;
+}
+
+.left,.right{
+    width: 94%;
+}
+
+.news{
+    float: none;
+    width: 94%;
+}
+
+.videos1, .videos2{
+    margin-right: 2%;
+}
+
+.bckg1{
+    background: url('/images/banners/asoweb1m.jpg') no-repeat;
+}
+.bckg2{
+    background: url('/images/banners/asoweb2m.jpg') no-repeat;
+}
+.bckg3{
+    background: url('/images/banners/asoweb3m.jpg') no-repeat;
+}
+.bckg4{
+    background: url('/images/banners/asoweb4m.jpg') no-repeat;
+}
+.bckg5{
+    background: url('/images/banners/asoweb5m.jpg') no-repeat;
+}
+.bckg6{
+    background: url('/images/banners/asoweb6m.jpg') no-repeat;
+}
+.bckg7{
+    background: url('/images/banners/asoweb7m.jpg') no-repeat;
+}
+
+fieldset{
+    width: auto;
+}
+
+.audio2{
+    display: block;
+}
+
+.audio1{
+    display: none;
 }

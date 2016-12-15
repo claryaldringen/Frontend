@@ -13,7 +13,7 @@ class @Concert extends CJS.Component
 
 	getWidth: -> document.getElementById('concert').offsetWidth
 
-	getCount: -> Math.round(@getWidth()/(320*window.devicePixelRatio))
+	getCount: -> Math.round(@getWidth()/320)
 
 	load: ->
 		@sendRequest('loadConcerts', {menuId: @menuId}, @loadResponse)

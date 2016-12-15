@@ -35,7 +35,7 @@
 		{foreach $album->songs as $i => $song}
 		<tr>
 			<td><h3>{$i+1}.</h3></td><td><h3 {if !empty($song->text)}onclick="$('#songtext{$i}').slideToggle()" class="hand"{/if}>{$song->name}</h3></td>
-			<td>{if !empty($song->file)}<audio src="http://{$adminHost}/userfiles/{$song->file}" controls preload></audio>{/if}</td>
+			<td>{if !empty($song->file)}<audio src="http://{$adminHost}/userfiles/{$song->file}" controls class="audio1"></audio>{/if}</td>
 			<td class="td-text">
 				{if !empty($song->text)}
 				<a href="#" onclick="$('#songtext{$i}').slideToggle()">Zobrazit&nbsp;text</a>
@@ -47,7 +47,14 @@
 				{/if}
 			</td>
 		</tr>
-		<tr><td colspan="5"><div id="songtext{$i}" class="song-text">{$song->text|noescape}</div></td></tr>
+		<tr>
+			<td colspan="5">
+				<div id="songtext{$i}" class="song-text">
+					{if !empty($song->file)}<audio src="http://{$adminHost}/userfiles/{$song->file}" controls class="audio2"></audio>{/if}
+					{$song->text|noescape}
+				</div>
+			</td>
+		</tr>
 		{/foreach}
 		</table>
 	</div>

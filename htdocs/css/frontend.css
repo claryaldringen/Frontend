@@ -9,6 +9,7 @@ body{
     margin: 0;
     color: #ffffff;
     font-family: Tahoma, Verdana, Arial;
+    font-size: 16px;
 }
 
 h1, h2,h3{
@@ -23,7 +24,7 @@ h3{
     font-size: 100%;
 }
 
-h1:first-letter, h2:first-letter, h3:first-letter, button:first-letter,legend:first-letter{
+h1:first-letter, h2:first-letter, h3:first-letter, button:first-letter{
     font-size: 120%;
 }
 
@@ -226,6 +227,7 @@ a:hover{
 .arrows{
     text-align: center;
     margin-bottom: 10px;
+    z-index: 9;
 }
 
 #concert_frameset{
@@ -257,10 +259,6 @@ a:hover{
     text-align: center;
     margin-right: 1%;
     padding-bottom: 60px;
-}
-
-.album h2{
-    font-size: 140%;
 }
 
 .album-opened {
@@ -372,10 +370,6 @@ a.folder{
     height: 250px;
 }
 
-.concertbox h3{
-    font-size: 150%;
-}
-
 .concertbox img{
     max-width: 50%;
     max-height: 99%;
@@ -449,12 +443,6 @@ label{
     font-weight: normal;
 }
 
-legend{
-    font-family: Times;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
 textarea{
     width: 300px;
     height: 200px;
@@ -509,7 +497,7 @@ input[type="number"] {
     height: 17%;
     max-height: 432px;
     position: absolute;
-    z-index: 99;
+    z-index: 10;
 }
 
 button,input[type='submit']{
@@ -625,7 +613,6 @@ a.doShowReply {
 }
 
 .title ul li a{
-    font-size: 16px;
     font-family: Times;
     color: #e7d67e;
     text-decoration: none;
@@ -643,4 +630,12 @@ a.doShowReply {
 
 .error{
     color: #FF2222;
+}
+
+#frm-emailForm table{
+    width: 100%;
+}
+
+.audio2{
+    display: none;
 }
