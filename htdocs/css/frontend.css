@@ -48,7 +48,6 @@ body {
 	position: relative;
 	background: url('/images/banner2.jpg') 0px 0px;
 	background-size: 100%;
-	/*height: 150px;*/
 	padding-bottom: 24%;
 	border: solid 1px #4D2314;
 }
@@ -88,10 +87,18 @@ p{
 
 .menu{
 	font-family: psaci,psaci-ie,Arial;
+	color: #000;
+}
+
+.menu ul{
+
 	list-style-type: none;
 	padding: 0px 0px 0px 30px;
 	margin: 0px;
-	color: #000;
+}
+
+.minimenu {
+	display: none;
 }
 
 .brackett{
@@ -112,15 +119,19 @@ p{
 	line-height: 24px;
 }
 
-table.contact{
+table.contact1{
 	width: 70%;
 }
 
-.contact img{
+.contact2 {
+	display: none;
+}
+
+.contact1 img, .contact2 img{
 	border: solid 1px #4D2314;
 }
 
-.contact textarea{
+.contact1 textarea, .contact2 textarea{
 	width: 100%;
 }
 
@@ -151,6 +162,23 @@ table{
 	display: none;
 }
 
+.flag{
+	float: right;
+	margin: 25% 10px 0px 0px;
+}
+
+.centerfoto{
+	width: 700px;
+	height: 525px;
+	display: inline-block;
+	overflow: hidden;
+	margin: auto;
+}
+
+.centerfoto img{
+	width: 99.5%
+}
+
 
 @media screen and (max-width: 1024px) {
 	body{
@@ -168,12 +196,20 @@ table{
 		max-width: 60%;
 	}
 
-	.contact{
+	.contact1{
 		max-width: 60%;
 	}
 
-	.contact img {
+	.contact1 img {
 		max-width: 100%;
+	}
+
+	.centerfoto{
+		width: 60%;
+		height: 45%;
+		display: inline-block;
+		overflow: hidden;
+		margin: auto;
 	}
 
 }
@@ -200,7 +236,7 @@ table{
 		width: 35%;
 	}
 
-	.menu{
+	.menu ul{
 		padding: 0 0 0 8px;
 	}
 
@@ -208,5 +244,105 @@ table{
 		margin: 0;
 		width: 100%;
 	}
+
+	.centerfoto{
+		width: 64%;
+		height: 48%;
+		display: inline-block;
+		overflow: hidden;
+		margin: auto;
+	}
+
 }
 
+.footer{
+	margin: -25px 0 5px 0;
+	color: #FFFFFF;
+	font-size: 12px;
+}
+
+.footer a{
+	color: #FFFFFF;
+}
+
+@media screen and (max-width: 640px) {
+
+	p{
+		padding: 8px;
+	}
+
+	.header{
+		height: 320px;
+		background-repeat: no-repeat;
+		background-size: 1304px 320px;
+		background-position: -176px 0;
+	}
+
+	.left_panel{
+		width: 160px
+	}
+
+	.brackett{
+		width: 140px;
+		margin: 0 10px 16px 10px;
+	}
+
+	.minimenu{
+		display: block;
+		font-size: 48px;
+		margin: 0 0 0 12px;
+	}
+
+	.menu{
+		margin-top: 24px;
+	}
+
+	.menu ul{
+		display: none;
+	}
+
+	.minimenuicon{
+		margin-top: 24px;
+		width: 28px;
+		float: left;
+	}
+
+	.minimenuicon hr{
+		margin: 6px 4px;
+		border: solid 1px black;
+	}
+
+	.flag{
+		position: absolute;
+		left: 176px;
+		top: 336px;
+		margin: 0;
+	}
+
+	.centerfoto{
+		width: 98%;
+		display: inline-block;
+		overflow: hidden;
+		margin: 1%;
+	}
+
+	.footer {
+		color: #FFFFFF;
+		background: #4D2314;
+		padding: 10px;
+		margin-top: 1px;
+	}
+
+	.bordered-table td, .bordered-table th{
+		font-size: 9px;
+	}
+
+	.contact1{
+		display: none;
+	}
+
+	.contact2{
+		display: block;
+		width: 99%;
+	}
+}

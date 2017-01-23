@@ -4,6 +4,7 @@
     <meta name="Distribution" content="Global" >
     <meta name="Author" content="Martin Zadražil" >
     <meta name="Robots" content="all, index, follow" >
+		<meta name="viewport" id="viewportmeta" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
     <link rel="stylesheet" type="text/css" href="{$baseUri}/css/frontend.css">
 		<link rel="stylesheet" type="text/css" href="http://cms.freetech.cz/bower_components/lightbox/css/lightbox.css">
@@ -22,7 +23,12 @@
 	</head>
   <body>
 		{block content}{/block}
-		<script type="text/javascript">
+	  <div class="footer">
+	    Copyright &copy; 2015 - {date('Y')} 9th Illinois Cavalry Regiment
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    Vytvoření a správa: Martin Zadražil (<a href="http://www.freetech.cz">freetech.cz</a>)
+	  </div>
+  	<script type="text/javascript">
 			images = ['{?echo implode("','", $images)?}']
 		</script>
 	</body>

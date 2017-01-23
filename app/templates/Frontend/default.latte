@@ -4,9 +4,23 @@
 	<div class="main">
 		<div class="header">
 			<img class="title" src="/images/title.png">
+			{if $languageId == 40}
+				<a href="{link changeLanguage!}"><img src="/images/cz.png" class="flag"></a>
+			{else}
+				<a href="{link changeLanguage!}"><img src="/images/us.png" class="flag"></a>
+			{/if}
 			<div class="left_panel">
-				<img src="/images/brackett.jpg" width="160" class="brackett">
+				<div class="menu">
+					<a href="#" onclick="$('.menu ul').animate({l}width:'toggle'{r},350);$('.brackett').hide();$(this).toggle()" class="minimenu">
+						<div class="minimenuicon">
+							<hr><hr><hr>
+						</div>
+						Menu
+					</a>
+					<img src="/images/brackett.jpg" width="160" class="brackett">
+					<img src="/images/logo.png" width="160" class="brackett">
 					{include 'menu.latte', 'menu' => $items, 'url' => ''}
+				</div>
 			</div>
 		</div>
 		<div class="content">	{include 'containers.latte'}
