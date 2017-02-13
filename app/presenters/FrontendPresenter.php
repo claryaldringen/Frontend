@@ -155,7 +155,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 		$mail->addTo('prodej@asonance.cz');
 		$mail->addBcc($values->email, $values->name);
 		$this->context->getService('mailer')->send($mail);
-		$this->flashMessage('Objednávka byla odeslána. Kopie objdnávky byla odeslána také na ' . $values->email);
+		$this->flashMessage('Objednávka byla odeslána. Kopie objednávky byla odeslána také na ' . $values->email);
 		$this->redirect('this');
 	}
 
