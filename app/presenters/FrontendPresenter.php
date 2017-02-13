@@ -142,7 +142,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 	public function recapitulationFormSubmitted(UI\Form $form) {
 		$values = $form->getValues();
 		$values = json_decode($values['data']);
-		$post = array('balík na poštu', 'balík do ruky');
+		$post = array('zásilku na dobírku','balík na poštu', 'balík do ruky');
 		$body = "Dobrý den,\n prosím o zaslání alb\n\n";
 		foreach($values->albums as $album) {
 			$body .= "{$album->count}x {$album->name}\n";
