@@ -9,7 +9,3 @@ dibi:
 	password:
 	database: 318_cms
 	lazy: TRUE
-
-nette:
-    application:
-        catchExceptions: false
