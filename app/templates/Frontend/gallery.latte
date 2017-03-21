@@ -1,17 +1,17 @@
 {if !isset($folder)}
-{?extract($data[$item['id']])?}
+{php extract($data[$item['id']])?}
 {/if}
 <h1>{$folder['name']}</h1>
 <div>
-{if isset($folder['text'])}{!$folder['text']}{/if}
+{if isset($folder['text'])}{$folder['text']|noescape}{/if}
 </div>
 {if isset($folder['folders'])}
-	{foreach $folder['folders'] as $item}
-		{if isset($item['images'][0]) }
-		<a href="/{$url}/{$item['url']}.html" class="image">
-			<img src="http://{$adminHost}/images/userimages/small/{$item['images'][0]['file']}">
+	{foreach $folder['folders'] as $folderItem}
+		{if isset($folderItem['images'][0]) }
+		<a href="/{$url}/{$folderItem['url']}.html" class="image">
+			<img src="http://{$adminHost}/images/userimages/small/{$folderItem['images'][0]['file']}">
 			<br>
-			<span>{$item['name']}</span>
+			<span>{$folderItem['name']}</span>
 		</a>
 		{/if}
 	{/foreach}

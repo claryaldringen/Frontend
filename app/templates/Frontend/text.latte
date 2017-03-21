@@ -1,2 +1,2 @@
-{?extract($data[$item['id']])?}
-{!$text}
+{php extract($data[$item['id']])?}
+{$text|noescape}

@@ -1,4 +1,4 @@
-{?extract($data[$item['id']])?}
+{php extract($data[$item['id']])?}
 {dump $item}
 {if isset($albums)}
 	<h1>{$title}</h1>
@@ -36,7 +36,7 @@
 				{/if}
 			</td>
 		</tr>
-		<tr><td colspan="5"><div id="songtext{$i}" class="song-text">{!$song->text}</div></td></tr>
+		<tr><td colspan="5"><div id="songtext{$i}" class="song-text">{$song->text|noescape}</div></td></tr>
 		{/foreach}
 		</table>
 	</div>

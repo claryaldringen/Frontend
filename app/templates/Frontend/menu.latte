@@ -1,20 +1,20 @@
 <ul>
-{foreach $menu['items'] as $item}
-	{if $item['visibility'] == 'visible'}
+{foreach $menu['items'] as $menuItem}
+	{if $menuItem['visibility'] == 'visible'}
 		<li>
 		{if empty($isSinglePage)}
-			{var $link = $url . '/' . $item['url'] }
-			{if $item['id'] == $menuId}
-				<span>{$item['text']}</span>
+			{var $link = $url . '/' . $menuItem['url'] }
+			{if $menuItem['id'] == $menuId}
+				<span>{$menuItem['text']}</span>
 			{else}
-				<a href="{$link}.html">{$item['text']}</a>
+				<a href="{$link}.html">{$menuItem['text']}</a>
 			{/if}
-			{if isset($item['items'])}
-				{include 'menu.latte', menu => $item, url => $link}
+			{if isset($menuItem['items'])}
+				{include 'menu.latte', menu => $menuItem, url => $link}
 			{/if}
 		{else}
-			{var $link = $url . '#' . $item['url'] }
-			<a href="{$link}">{$item['text']}</a>
+			{var $link = $url . '#' . $menuItem['url'] }
+			<a href="{$link}">{$menuItem['text']}</a>
 		{/if}
 		</li>
 	{/if}
