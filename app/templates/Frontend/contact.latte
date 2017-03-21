@@ -26,13 +26,13 @@
   <div class="box left">
     {control emailForm}
    </div>
-  <div class="box right">{!$text}</div>
+  <div class="box right">{$text|noescape}</div>
   <div class="box" style="clear: both;">
   	<h2>Diskuze</h2>
   	<div id="discussion"></div>
   </div>
   <script type="text/javascript">
-  	var doc = new CJS.Document()
+  	var doc = new CJS.Document();
   	var discussion = new Discussion('discussion', doc.render());
   	discussion.setBaseUrl({link Ajax:default}).setMenuId({$menuId}).load();
   </script>

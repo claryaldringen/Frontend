@@ -7,20 +7,20 @@
 </div>
 <div class="box gallery">
 	<div>
-	{if isset($folder['text'])}{!$folder['text']}{/if}
+	{if isset($folder['text'])}{$folder['text']|noescape}{/if}
 	</div>
 	{if isset($folder['folders'])}
 		{var $sort = []}
-		{foreach $folder['folders'] as $item}
-			{? $sort[] = $item['sort_key']; }
+		{foreach $folder['folders'] as $folderItem}
+			{php $sort[] = $folderItem['sort_key']; }
 		{/foreach}
-		{? array_multisort($sort, $folder['folders']); }
-		{foreach $folder['folders'] as $item}
-			{if isset($item['images'][0]) }
-			<a href="/{$url}/{$item['url']}.html" class="folder">
-				<img src="http://{$adminHost}/images/userimages/medium/{$item['images'][0]['file']}">
+		{php array_multisort($sort, $folder['folders']); }
+		{foreach $folder['folders'] as $folderItem}
+			{if isset($folderItem['images'][0]) }
+			<a href="/{$url}/{$folderItem['url']}.html" class="folder">
+				<img src="http://{$adminHost}/images/userimages/medium/{$folderItem['images'][0]['file']}">
 				<br>
-				<h3>{$item['name']}</h3>
+				<h3>{$folderItem['name']}</h3>
 			</a>
 			{/if}
 		{/foreach}

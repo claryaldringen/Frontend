@@ -23,7 +23,7 @@
 	{if !empty($articles)}
 		<div class="box news">
 			<h1>Aktuálně</h1>
-			{foreach $articles as $article}<div class="hp-article">{!$article->text}</div>{/foreach}
+			{foreach $articles as $article}<div class="hp-article">{$article->text|noescape}</div>{/foreach}
 		</div>
 	{/if}
 	<div class="box {if !empty($articles)}concerts1{else}concerts2{/if}">

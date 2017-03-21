@@ -4,15 +4,15 @@
 		<li>
 		{if !empty($absolute)}
 			{var $parts = explode('/', $url)}
-			{? $parts[count($parts)-1] = $item['url'] ?}
+			{php $parts[count($parts)-1] = $menuItem['url'] ?}
 			{var $link = implode('/', $parts)}
 		{else}
-			{var $link = $url . '/' . $item['url'] }
+			{var $link = $url . '/' . $menuItem['url'] }
 		{/if}
-		{if $item['id'] == $menuId}
-			<a href="{$link}.html" class="active">{$item['text']}</a>
+		{if $menuItem['id'] == $menuId}
+			<a href="{$link}.html" class="active">{$menuItem['text']}</a>
 		{else}
-			<a href="{$link}.html">{$item['text']}</a>
+			<a href="{$link}.html">{$menuItem['text']}</a>
 		{/if}
 		</li>
 	{/if}

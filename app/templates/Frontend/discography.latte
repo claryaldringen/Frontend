@@ -1,9 +1,9 @@
-{?extract($data[$item['id']])?}
+{php extract($data[$item['id']])?}
 {foreach $flashes as $flash}<div class="box"><h3>{$flash->message}</h3></div>{/foreach}
 {if isset($albums)}
 	<div class="box">
 		<h1>{$title}</h1>
-		{!$text}
+		{$text|noescape}
 	</div>
 	{foreach $albums as $album}
 		<div class="box album">
@@ -27,7 +27,7 @@
 	<div class="box album-opened">
 		<img src="http://{$adminHost}/images/userimages/original/{$album->file}">
 		<div class="album-text">
-		{!$album->text}
+		{$album->text|noescape}
 		</div>
 	</div>
 	<div class="box album-songs">

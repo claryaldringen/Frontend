@@ -41,7 +41,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 
 	public function createComponentEmailForm() {
 		$form = new UI\Form($this, 'emailForm');
-		$form->addText('url')->addRule(~UI\Form::FILLED)->setAttribute('class', 'as');
+		$form->addText('url')->addRule(UI\Form::BLANK)->setAttribute('class', 'as');
 		$form->addText('email', 'Váš e-mail:')
 			->addCondition(UI\Form::FILLED)
 			->addRule(UI\Form::EMAIL, 'Váše e-mailová adresa není správně zadaná. Zkontrolujte, zdali jste ji zadali ve správném tvaru.');

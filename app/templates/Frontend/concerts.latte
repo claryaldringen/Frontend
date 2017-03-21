@@ -34,7 +34,7 @@
 				{$concert->start_time|date:'d.m.Y'}
 			{/if}
 			<br>
-			{if !empty($concert->text)}{!$concert->text}{/if}
+			{if !empty($concert->text)}{$concert->text|noescape}{/if}
 			<br></div>
 		{/foreach}
 	{/if}
@@ -53,7 +53,7 @@
 			{/if}
 		{/foreach}
 		{foreach $articles as $article}
-			<div class="box">{!$article->text}</div>
+			<div class="box">{$article->text|noescape}</div>
 			{if !empty($length)}<a href="{$item['url']}/{$article->url}.html" class="doShowReply">Zobrazit celý článek</a>{/if}
 		{/foreach}
 	</div>
