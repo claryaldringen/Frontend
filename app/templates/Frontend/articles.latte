@@ -9,7 +9,7 @@
 		{foreach $articles as $k => $article}
 			<div class="article theme{$k} {if $iterator->even}even{else}odd{/if} {if $iterator->last}end{/if}">
 				<div class="inner">
-					{!$article->text}
+					{$article->text|noescape}
 					{if !empty($length)}<a href="{$item['url']}/{$article->url}.html">Zobrazit celý článek</a>{/if}
 				</div>
 			</div>
