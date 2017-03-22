@@ -21,7 +21,7 @@
 				</div>
 				{if isset($fold['text'])}
 					<div class="col-xs-6 text-left">
-						{!$fold['text']}
+						{$fold['text']|noescape}
 					</div>
 				{/if}
 			</div>
@@ -31,7 +31,7 @@
 {elseif !empty($folder['images'])}
 	{dump $data}
 	{if !empty($folder['text'])}
-		<div class="row"><div class="col-xs-12">{!$folder['text']}</div></div>
+		<div class="row"><div class="col-xs-12">{$folder['text']|noescape}</div></div>
 	{/if}
 	<div class="row">
 	{foreach $folder['images'] as $i => $image}
