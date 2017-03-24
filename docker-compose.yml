@@ -31,10 +31,6 @@ services:
             - db
         ports:
             - 8080:8080
-    library:
-        image: composer_library
-        volumes:
-          - library:/vendor
+
 volumes:
     persistent:
-    library:
