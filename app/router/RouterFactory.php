@@ -15,6 +15,11 @@ class RouterFactory
 	{
 		$router = new Routers\RouteList();
 
+		$router[] = new Routers\Route('/sitemap.xml',array(
+			'presenter' => 'Frontend',
+			'action' => 'sitemap',
+		));
+
 		$router[] = new Routers\Route('/ajax/',array(
 			'presenter' => 'Ajax',
 			'action' => 'default',
