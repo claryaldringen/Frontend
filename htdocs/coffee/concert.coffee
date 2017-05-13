@@ -1,5 +1,7 @@
 
-class @Concert extends CJS.Component
+Component = require './ComponentJS/component'
+
+class Concert extends Component
 
 	constructor: (@concerts) ->
 		@concertsToShow = []
@@ -111,3 +113,5 @@ class @Concert extends CJS.Component
 		if not @binded
 			@binded = yes
 			window.addEventListener 'resize', => @render()
+
+module.exports = Concert

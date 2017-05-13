@@ -1,3 +1,7 @@
+
+import Banner from '../coffee/banner';
+import Concert from '../coffee/concert';
+
 $(document).ready(function() {
 	var banner = new Banner();
 	banner.render();

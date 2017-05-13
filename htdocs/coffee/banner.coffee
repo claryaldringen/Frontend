@@ -1,4 +1,5 @@
-class @Banner
+
+class Banner
 
 	constructor: ->
 		@image = 1
@@ -20,4 +21,4 @@ class @Banner
 		element = document.getElementById('banner')
 		element.innerHTML = @getHtml()
 
-
+module.exports = Banner
