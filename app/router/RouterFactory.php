@@ -44,7 +44,7 @@ class RouterFactory
 			'action' => 'admin',
 		));
 
-		$router[] = new Routers\Route('/<url kontakt|kontakty|email|contact|contacts|e-mail>.html',array(
+		$router[] = new Routers\Route('/<url kontakty-a-chat>.html',array(
 			'presenter' => 'Frontend',
 			'action' => 'contact'
 		));
