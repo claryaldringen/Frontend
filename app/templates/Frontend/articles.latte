@@ -12,18 +12,18 @@
 		{$article|noescape}
 	</div>
 {else}
-	<script src="{$basePath}/coffee/article_loader.js" type="text/javascript"></script>
 	<div id="articles">
 		{foreach $articles as $article}
 			<div class="box">
 				{$article->text|noescape}
-				{if !empty($length)}<a href="{$item['url']}/{$article->url}.html" onclick="return (new ArticleLoader()).setBaseUrl({link Ajax:default}).loadArticleById(this, {$article->id});" class="doShowReply">Zobrazit celý článek</a>{/if}
+				{if !empty($length)}<a href="{$item['url']}/{$article->url}.html" data-id="{$article->id}" class="doOpenArticle">Zobrazit celý článek</a>{/if}
 			<div class="clear"></div></div>
 		{/foreach}
 	</div>
 
 	<script type="text/javascript">
-	var articleLoader = new ArticleLoader();
-	articleLoader.setBaseUrl({link Ajax:default}).setMenuId({$menuId}).setShowLink({if !empty($length)}true{else}false{/if}).run()
+		window.component = 'article';
+		window.baseUrl = {link Ajax:default};
+		window.menuId = {$item['id']};
 	</script>
 {/if}

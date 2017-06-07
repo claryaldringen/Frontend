@@ -1,7 +1,6 @@
 {layout '@layout.latte'}
 
 {block content}
-	<script src="{$basePath}/coffee/discussion.js" type="text/javascript"></script>
 	<a href="https://www.facebook.com/groups/44492391363/?fref=ts" target="_blank">
 		<img src="/images/facebook_32.png" width="32" height="32" class="social">
 	</a>
@@ -32,9 +31,9 @@
   	<div id="discussion"></div>
   </div>
   <script type="text/javascript">
-  	var doc = new CJS.Document();
-  	var discussion = new Discussion('discussion', doc.render());
-  	discussion.setBaseUrl({link Ajax:default}).setMenuId({$menuId}).load();
+	  window.component = 'discussion';
+	  window.baseUrl = {link Ajax:default};
+		window.menuId = {$item['id']};
   </script>
 
 {/block}

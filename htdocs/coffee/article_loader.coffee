@@ -1,5 +1,6 @@
+Component = require './ComponentJS/component'
 
-class @ArticleLoader extends CJS.Component
+class ArticleLoader extends Component
 
 	constructor: (parent, id) ->
 		super(parent, id)
@@ -39,3 +40,5 @@ class @ArticleLoader extends CJS.Component
 		window.oldHtml[@element.dataset.articleId] = $(@element).parent().html()
 		newHtml = response.text + '<p><a href="#" onClick="$(this).parent().parent().html(oldHtml[' + @element.dataset.articleId + ']);return false;" class="doShowReply">Zobrazit náhled článku</a></p>'
 		$(@element).parent().html(newHtml)
+
+module.exports = ArticleLoader

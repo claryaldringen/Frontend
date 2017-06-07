@@ -570,7 +570,7 @@ textarea:focus, input:focus{
     text-align: center;
 }
 
-a.doShowReply {
+a.doShowReply,a.doOpenArticle {
     cursor: pointer;
     margin-left: 20px;
     color: #e7d67e;

@@ -3,3 +3,5 @@
 /log
 /htdocs/coffee/**/*.js
 /htdocs/coffee/**/*.js.map
+/htdocs/js/
+/node_modules/

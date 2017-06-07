@@ -1,10 +1,10 @@
 module.exports = {
 	entry: {
-		document: './htdocs/coffee/document.coffee',
-		gallery_document: './htdocs/coffee/gallery_document.coffee'
+		document: './htdocs/coffee/document.coffee'
+		//gallery_document: './htdocs/coffee/gallery_document.coffee'
 	},
 	output: {
-		path: '/var/www/html/Backend/htdocs/js',
+		path: '/var/www/html/Frontend/htdocs/js',
 		filename: '[name].js'
 	},
 	module: {
@@ -25,7 +25,7 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.coffee','.js', '.jsx']
 	},
 	devtool: 'source-map',
 	watch: true
