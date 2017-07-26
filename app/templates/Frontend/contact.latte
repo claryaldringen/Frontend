@@ -14,10 +14,12 @@
 		</div>
 	</div>
 	<div class="content">
-	{if empty($isSinglePage)}
-		{include 'containers.latte'}
-	{else}
-		{include 'single.latte'}
-	{/if}
+		<h1>Kontakt</h1>
+		<div class="contactright">
+			{$text|noescape}
+		</div>
+		<div class="contactleft">
+			{control emailForm}
+		</div>
 	</div>
 {/block}

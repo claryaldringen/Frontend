@@ -1,5 +1,4 @@
 {php extract($data[$item['id']])?}
-
 {if isset($article)}
 	{$article|noescape}
 {else}
@@ -7,7 +6,16 @@
 
 	<div id="articles">
 		{foreach $articles as $article}
-			{$article->text|noescape}
+			{continueIf !in_array($item['id'], [75,82]) && $iterator->first}
+			{if in_array($item['id'], [75,82])}
+				<a class="articles" href="{$item['url']}/{$article->url}.html">
+				{$article->text|noescape}
+				</a>
+			{else}
+				<a href="{$item['url']}/{$article->url}.html" class="articles">
+					<h3>{php echo str_replace("<h1>", '', substr($article->text, 0, strpos($article->text, "</h1>"))) }</h3>
+				</a>
+			{/if}
 			{if !empty($length)}<a href="{$item['url']}/{$article->url}.html">Zobrazit celý článek</a>{/if}
 		{/foreach}
 	</div>

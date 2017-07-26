@@ -3,15 +3,17 @@
 	{if $menuItem['visibility'] == 'visible'}
 		<li>
 		{if empty($isSinglePage)}
+			<div>
 			{var $link = $url . '/' . $menuItem['url'] }
 			{if $menuItem['id'] == $menuId}
-				<span>{$menuItem['text']}</span>
+				<a href="{$link}.html" class="selected">{$menuItem['text']}</a>
 			{else}
 				<a href="{$link}.html">{$menuItem['text']}</a>
 			{/if}
-			{if isset($menuItem['items'])}
+			{*if isset($menuItem['items'])}
 				{include 'menu.latte', menu => $menuItem, url => $link}
-			{/if}
+			{/if*}
+			</div>
 		{else}
 			{var $link = $url . '#' . $menuItem['url'] }
 			<a href="{$link}">{$menuItem['text']}</a>

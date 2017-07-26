@@ -1,5 +1,7 @@
 /.idea
 /temp
 /log
+/node_modules
+/htdocs/js/app.js
 /htdocs/coffee/**/*.js
 /htdocs/coffee/**/*.js.map

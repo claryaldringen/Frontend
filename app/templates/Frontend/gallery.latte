@@ -1,35 +1,67 @@
 {if !isset($folder)}
 {php extract($data[$item['id']])?}
 {/if}
-<h1>{$folder['name']}</h1>
-<div>
-{if isset($folder['text'])}{$folder['text']|noescape}{/if}
-</div>
-{if isset($folder['folders'])}
-	{foreach $folder['folders'] as $folderItem}
-		{if isset($folderItem['images'][0]) }
-		<a href="/{$url}/{$folderItem['url']}.html" class="image">
-			<img src="http://{$adminHost}/images/userimages/small/{$folderItem['images'][0]['file']}">
-			<br>
-			<span>{$folderItem['name']}</span>
-		</a>
-		{/if}
-	{/foreach}
-{/if}
+{if $item['id'] == 73}
+	<h1>{$folder['name']}</h1>
+	<div>
+		{if isset($folder['text'])}{$folder['text']|noescape}{/if}
+	</div>
+	{if isset($folder['folders'])}
+		{var $sort = []}
+		{foreach $folder['folders'] as $folderItem}
+			{php $sort[] = $folderItem['sort_key']; }
+		{/foreach}
+		{php array_multisort($sort, $folder['folders']); }
+		{foreach $folder['folders'] as $folderItem}
+			{if isset($folderItem['images'][0]) }
+				<a href="/{$url}/{$folderItem['url']}.html" class="coatofarms">
+					<img src="http://{$adminHost}/images/userimages/large/{$folderItem['images'][0]['file']}">
+					<br>
+					<h2>{$folderItem['name']}</h2>
+				</a>
+			{/if}
+		{/foreach}
+	{/if}
+{else}
+	<h1>{$folder['name']}</h1>
+	<div>
+		{if isset($folder['text'])}{$folder['text']|noescape}{/if}
+	</div>
+	{if isset($folder['folders'])}
+		{var $sort = []}
+		{foreach $folder['folders'] as $folderItem}
+			{php $sort[] = $folderItem['sort_key']; }
+		{/foreach}
+		{php array_multisort($sort, $folder['folders']); }
+		{foreach $folder['folders'] as $folderItem}
+			{if isset($folderItem['images'][0]) }
+				<a href="/{$url}/{$folderItem['url']}.html" class="image">
+					<div>
+						<img src="http://{$adminHost}/images/userimages/medium/{$folderItem['images'][0]['file']}">
+					</div>
+					<span>{$folderItem['name']}</span>
+				</a>
+			{/if}
+		{/foreach}
+	{/if}
 
-{if isset($folder['images'])}
-	{foreach $folder['images'] as $image}
-		{if $image['type'] == 'general'}
-			<a href="{plink download, 'hash' => $image['file']}">
-				<span>{$image['name']}</span>
-			</a>
-		{else}
-		<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-1" data-title="{$image['name']}">
-			<img src="http://{$adminHost}/images/userimages/small/{$image['file']}">
-			<br>
-			<span>{$image['name']}</span>
-		</a>
-		{/if}
-	{/foreach}
+	<div style="clear: both;"></div>
+	{if isset($folder['images'])}
+	<script type="text/javascript">
+		window.galleryItems = [
+		{foreach $folder['images'] as $image}
+			{if $image['parent'] == $folder['id'] }
+			{
+				src: 'http://{$adminHost|noescape}/images/userimages/original/{$image['file']|noescape}',
+				thumbnail: 'http://{$adminHost|noescape}/images/userimages/medium/{$image['file']|noescape}',
+				w: {$image['width']},
+				h: {$image['height']},
+				title: {$image['name']}
+			},
+			{/if}
+		{/foreach}
+			]
+	</script>
+	{/if}
+	<div id="app"></div>
 {/if}
-<div style="clear: both;"></div>
