@@ -1,0 +1,39 @@
+version: "3"
+services:
+    www:
+        build: .
+        ports:
+            - "8001:80"
+        volumes:
+            - .:/var/www/html/Frontend
+            - library:/var/www/html/Library/vendor
+            - /Users/clary/Projects/CMS:/var/www/html/CMS
+        links:
+            - db
+        networks:
+            - default
+    db:
+        image: mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: 318_cms
+            MYSQL_ROOT_PASSWORD: ""
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - persistent:/var/lib/mysql
+        networks:
+            - default
+    adminer:
+        image: adminer
+        links:
+            - db
+        ports:
+            - 8080:8080
+    library:
+        image: composer_library
+        volumes:
+          - library:/vendor
+volumes:
+    persistent:
+    library:
