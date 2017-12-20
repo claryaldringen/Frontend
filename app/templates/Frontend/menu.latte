@@ -5,7 +5,9 @@
 		{if empty($isSinglePage)}
 			{var $link = $url . '/' . $menuItem['url'] }
 			{if $menuItem['id'] == $menuId}
-				<span>{$menuItem['text']}</span>
+				<span class="aktualni">
+					<a href="{$link}.html">{$menuItem['text']}</a>
+				</span>
 			{else}
 				<a href="{$link}.html">{$menuItem['text']}</a>
 			{/if}

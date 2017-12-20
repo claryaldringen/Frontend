@@ -9,6 +9,7 @@
 		{foreach $articles as $article}
 			{$article->text|noescape}
 			{if !empty($length)}<a href="{$item['url']}/{$article->url}.html">Zobrazit celý článek</a>{/if}
+			<div class="oddelovac"></div>
 		{/foreach}
 	</div>
 

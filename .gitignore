@@ -3,3 +3,6 @@
 /log
 /htdocs/coffee/**/*.js
 /htdocs/coffee/**/*.js.map
+/dump/
+/**/.DS_Store
+¨

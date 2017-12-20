@@ -1,10 +1,48 @@
 {layout '@layout.latte'}
 
 {block content}
-	{include 'menu.latte', 'menu' => $items, 'url' => ''}
-	{if empty($isSinglePage)}
-		{include 'containers.latte'}
-	{else}
-		{include 'single.latte'}
-	{/if}
+	<div id="page">
+		<div id="headerback">
+			<div id="header">
+				<a href="/"><img style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/images/logo.png'); _width:1px; _height:1; border: none; " class="logo" src="/images/logo.png" alt="JK gate logo"></a>
+			</div>
+		</div>
+		<div id="inpage">
+			<div id="menu">
+                {include 'menu.latte', 'menu' => $items, 'url' => ''}
+			</div>
+			<div class="intext">
+				<div id="main">
+					{if empty($isSinglePage)}
+						{include 'containers.latte'}
+					{else}
+						{include 'single.latte'}
+					{/if}
+				</div>
+			</div>
+		</div>
+		<div id="footerback">
+			<div id="footer">
+				<div id="paticka">
+					<div id="menubottom">
+                        {include 'menu.latte', 'menu' => $items, 'url' => ''}
+					</div>
+					<div class="link">
+						©2009-{date('Y')} JK Gate  •  Vytvoření a správa Martin Zadražil (<a href="http://www.freetech.cz" alt="tvorba www">freetech.cz</a>)
+					</div>
+				</div>
+				<div id="form">
+					<h3>ZASÍLÁNÍ<br>NOVINEK</h3>
+					<form method="post" target="_self" >
+						<input class="f_email" type="text" name="odesilatel" value="emailová adresa" maxlength="60">
+						<input class="f_odeslat" type="submit" name="odeslano" value="Odeslat">
+					</form>
+					<p>- Mám zájem o zasílání novinek</p>
+					<?php
+          if(isset($vypis))echo "<p><b>".$vypis."</b></p>";
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
 {/block}
