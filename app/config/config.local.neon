@@ -1,11 +1,13 @@
 parameters:
-    siteId: 5
-    adminHost: cms.dev
-    language: 36
+    siteId: 7
 
 dibi:
-	host: localhost
+	host: db
 	username: root
 	password:
 	database: 318_cms
 	lazy: TRUE
+
+application:
+	catchExceptions: false
+
