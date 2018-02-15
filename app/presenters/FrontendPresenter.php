@@ -84,7 +84,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 		$form->addText('street','Ulice a číslo popisné')->setRequired('Ulice a číslo popisné musí být vyplněny.');
 		$form->addText('city','PSČ a Město')->setRequired('PSČ a město musí být vyplněny.');
 		$form->addText('phone','Telefon')->setRequired('Telefonní číslo musí být vyplněno.')->addRule(OrderFormRules::PHONE, 'Telefonní číslo nemá správný tvar.');
-		$form->addRadioList('post', 'Typ doručení:', array('Zásilka na dobírku (91 Kč, pouze při ceně objednávky do 500 Kč)','Balík na poštu (151 Kč)', 'Balík do ruky (164 Kč)'))->setDefaultValue(0);
+		$form->addRadioList('post', 'Typ doručení:', array('Zásilka na dobírku (99 Kč, pouze při ceně objednávky do 500 Kč)','Balík na poštu (155 Kč)', 'Balík do ruky (170 Kč)'))->setDefaultValue(0);
 		$form->addTextArea('message', 'Poznámka:');
 		$form->addSubmit('send', 'Pokračovat');
 		$form->setAction($form->getAction() . '#order');
@@ -103,7 +103,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			}
 		}
 
-		$postTypes = array(91,151,164);
+		$postTypes = array(99,155,170);
 		$this->template->post =  $postTypes[$values['post']];
 		$totalPrice = $this->template->post;
 		$albums = $this->context->getService('albumModel')->setLanguage($this->languageId)->getAlbum($ids);
@@ -111,7 +111,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			$album->count = $counts[$album->id];
 			$totalPrice += $album->count * $album->price;
 		}
-		if($totalPrice > 591 && $values['post'] == 0) {
+		if($totalPrice > 599 && $values['post'] == 0) {
 			$this->template->showError = 'Cena objednávky přesahuje 500 Kč. Vyberte prosím jiný způsob doručení.';
 			return;
 		}
