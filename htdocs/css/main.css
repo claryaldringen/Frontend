@@ -1,0 +1,70 @@
+body {
+    font-family: Garamond;
+    font-size: 1.1rem;
+}
+
+.jumbotron {
+    background: url('/img/header.jpg') black no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.headtext {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    text-align: right;
+    color: white;
+}
+
+.headtext h1{
+    font-size: 4rem;
+    text-shadow: 1px 1px black;
+}
+
+.subscribe {
+    position: absolute;
+    top: 8px;
+    width: 382px;
+    height: 64px;
+    background: url('/img/bigsubscribe.png') no-repeat;
+}
+
+.bigimage {
+    width: 100%;
+}
+
+.folder {
+    display: none;
+}
+
+.image {
+    width: 160px;
+    height: 120px;
+    float: left;
+    text-align: center;
+}
+
+.image img, .bigimage {
+    border: solid 1px #343a40;
+    cursor: pointer;
+}
+
+.footer {
+    padding: 1rem 0;
+}
+
+.container-fluid {
+    background: black;
+    color: white;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .subscribe {
+        top: 8px;
+        width: 199px;
+        height: 64px;
+        background-position: right;
+    }
+}

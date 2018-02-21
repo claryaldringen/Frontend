@@ -1,22 +1,39 @@
-<ul>
-{foreach $menu['items'] as $menuItem}
-	{if $menuItem['visibility'] == 'visible'}
-		<li>
-		{if empty($isSinglePage)}
-			{var $link = $url . '/' . $menuItem['url'] }
-			{if $menuItem['id'] == $menuId}
-				<span>{$menuItem['text']}</span>
-			{else}
-				<a href="{$link}.html">{$menuItem['text']}</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<div class="container">
+	<a class="navbar-brand" href="#">
+		<div class="subscribe"></div>
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div id="navbarSupportedContent" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav ml-auto">
+		{foreach $menu['items'] as $index => $menuItem}
+			{if $menuItem['visibility'] == 'visible' && $index}
+				<li class="nav-item">
+				{if empty($isSinglePage)}
+					{var $link = $url . '/' . $menuItem['url'] }
+					{if $menuItem['id'] == $menuId}
+						<span>{$menuItem['text']}</span>
+					{else}
+						<a href="{$link}.html">{$menuItem['text']}</a>
+					{/if}
+					{if isset($menuItem['items'])}
+						{include 'menu.latte', menu => $menuItem, url => $link}
+					{/if}
+				{else}
+					{var $link = $url . '#' . $menuItem['url'] }
+					<a class="nav-link" href="{$link}">{$menuItem['text']}</a>
+				{/if}
+				</li>
 			{/if}
-			{if isset($menuItem['items'])}
-				{include 'menu.latte', menu => $menuItem, url => $link}
-			{/if}
-		{else}
-			{var $link = $url . '#' . $menuItem['url'] }
-			<a href="{$link}">{$menuItem['text']}</a>
-		{/if}
-		</li>
-	{/if}
-{/foreach}
-</ul>
+		{/foreach}
+		</ul>
+	</div>
+	</div>
+</nav>
+<script>
+    $('.nav-link').on('click', function(){
+        $('.navbar-toggler').click() //bootstrap 3.x by Richard
+    });
+</script>

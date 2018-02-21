@@ -43,10 +43,7 @@ class RouterFactory
                 'action' => 'admin',
             ));
 
-            $router[] = new Routers\Route('/<url .+>.html', array(
-                'presenter' => 'Frontend',
-                'action' => 'default'
-            ));
+            $router[] = new Routers\Route('/<.+>', 'Frontend:default', Routers\Route::ONE_WAY);
 
             $router[] = new Routers\Route('', array(
                 'presenter' => 'Frontend',

@@ -1,4 +1,14 @@
-{foreach $items['items'] as $item}
+{foreach $items['items'] as $index => $item}
+	<a name="{$item['url']}"></a>
+    {if $index}
+		{if $index < count($items['items'])-1 }
+			<div class="container">
+			<h1>{$item['text']}</h1>
+        {else}
+			<div class="container-fluid">
+			<div class="container">
+		{/if}
+    {/if}
 	{if $item['visibility'] == 'visible'}
 		{if $item['type_id'] == 1}
 			{include 'text.latte', 'item' => $item}
@@ -16,4 +26,5 @@
 			{include 'discussion.latte', 'item' => $item}
 		{/if}
 	{/if}
+    {if $index}</div>{/if}
 {/foreach}

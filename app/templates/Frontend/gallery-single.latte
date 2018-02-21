@@ -1,18 +1,42 @@
 {if !isset($folder)}
 {php extract($data[$item['id']])?}
 {/if}
+<script>
+function show(id) {
+    $('.folder').hide()
+    $('#folder-' + id).show()
+}
+</script>
+<div class="row">
 {foreach $folder['folders'] as $fold}
 	{if isset($fold['images'])}
-		{$fold['name']}
 		{if isset($fold['text'])}{$fold['text']|noescape}{/if}
 		{foreach $fold['images'] as $i => $image}
-			{if $i == 0}
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
-			<img src="http://{$adminHost}/images/userimages/medium/{$image['file']}">
-			</a>
-			{else}
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}"></a>
-			{/if}
+			{breakIf $i > 0}
+				<div class="col-md-4" onClick="show({$fold['id']})">
+					<h2>{$fold['name']}</h2>
+					<img src="http://{$adminHost}/images/userimages/large/{$image['file']}" class="bigimage">
+				</div>
 		{/foreach}
 	{/if}
 {/foreach}
+</div>
+<div class="row">&nbsp;</div>
+{foreach $folder['folders'] as $fold}
+	<div class="row folder" id="folder-{$fold['id']}">
+		<div class="col-md-12">
+	{if isset($fold['images'])}
+		{if isset($fold['text'])}{$fold['text']|noescape}{/if}
+		{foreach $fold['images'] as $i => $image}
+			<div class="image">
+			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
+				<img src="http://{$adminHost}/images/userimages/small/{$image['file']}">
+			</a>
+			</div>
+		{/foreach}
+
+	{/if}
+		</div>
+	</div>
+{/foreach}
+<div style="clear: both;"></div>

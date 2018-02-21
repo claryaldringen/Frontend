@@ -1,10 +1,11 @@
 parameters:
-    siteId: 7
+    siteId: 8
+    isSinglePage: true
 
 dibi:
 	host: db
 	username: root
-	password: somepass
+	password: kunda
 	database: 318_cms
 	lazy: TRUE
 
