@@ -4,7 +4,7 @@ parameters:
 dibi:
 	host: db
 	username: root
-	password:
+	password: somepass
 	database: 318_cms
 	lazy: TRUE
 

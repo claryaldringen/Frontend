@@ -6,19 +6,20 @@ services:
             - "8001:80"
         volumes:
             - .:/var/www/html/Frontend
-            - library:/var/www/html/Library/vendor
-            - /Users/clary/Projects/CMS:/var/www/html/CMS
+            - /Users/mzadrazil001/Projects/Library:/var/www/html/Library
+            - /Users/mzadrazil001/Projects/CMS:/var/www/html/CMS
         links:
             - db
         networks:
             - default
     db:
         image: mysql
+        restart: always
         ports:
             - "3306:3306"
         environment:
             MYSQL_DATABASE: 318_cms
-            MYSQL_ROOT_PASSWORD: ""
+            MYSQL_ROOT_PASSWORD: somepass
         volumes:
             - ./dump:/docker-entrypoint-initdb.d
             - persistent:/var/lib/mysql
