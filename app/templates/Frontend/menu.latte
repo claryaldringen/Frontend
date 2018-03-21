@@ -1,22 +1,42 @@
-<ul>
-{foreach $menu['items'] as $menuItem}
-	{if $menuItem['visibility'] == 'visible'}
-		<li>
-		{if empty($isSinglePage)}
-			{var $link = $url . '/' . $menuItem['url'] }
-			{if $menuItem['id'] == $menuId}
-				<span>{$menuItem['text']}</span>
-			{else}
-				<a href="{$link}.html">{$menuItem['text']}</a>
-			{/if}
-			{if isset($menuItem['items'])}
-				{include 'menu.latte', menu => $menuItem, url => $link}
-			{/if}
-		{else}
-			{var $link = $url . '#' . $menuItem['url'] }
-			<a href="{$link}">{$menuItem['text']}</a>
-		{/if}
-		</li>
-	{/if}
-{/foreach}
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-xs-10"></div>
+		<a class="navbar-brand" href="#">
+			<div class="logo">
+				<span>A</span><span>D</span>
+			</div>
+			<div class="logotext">ATELIÉR<br>DVOŘÁK</div>
+		</a>
+		</div>
+		<div class="col-md-6 col-xs-2">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div id="navbarSupportedContent" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav ml-auto">
+				{foreach $menu['items'] as $index => $menuItem}
+					{if $menuItem['visibility'] == 'visible' && $index}
+						<li>
+						{if empty($isSinglePage)}
+							{var $link = $url . '/' . $menuItem['url'] }
+							{if $menuItem['id'] == $menuId}
+								<span>{$menuItem['text']}</span>
+							{else}
+								<a href="{$link}.html">{$menuItem['text']}</a>
+							{/if}
+							{if isset($menuItem['items'])}
+								{include 'menu.latte', menu => $menuItem, url => $link}
+							{/if}
+						{else}
+							{var $link = $url . '#' . $menuItem['url'] }
+							<a class="nav-link" href="{$link}">{$menuItem['text']}</a>
+						{/if}
+						</li>
+					{/if}
+				{/foreach}
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,118 @@
+
+body {
+    text-align: center;
+}
+
+.jumbotron {
+    background-image: url('/img/header.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    position: relative;
+}
+
+.jumboinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.jumbotron h1 {
+    margin-top: 15vh;
+    color: #ffffff;
+    text-shadow: 1px 1px #272a2d;
+}
+
+.jumbotron h4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.jumbotron hr {
+    border: solid 1px #fe7f01;
+    width: 50%;
+}
+
+.jumbotron button {
+    margin-top: 4rem;
+    background: #fe7f01;
+    color: #ffffff;
+    border: solid 1px #fe7f01;
+    font-size: 1.5rem;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.container-fluid {
+    background: #272a2d;
+    color: #ffffff;
+    padding: 2rem 0;
+}
+
+.container-fluid img {
+    margin: 1rem;
+}
+
+.container-fluid a {
+    color: #fe7f01;
+}
+
+.bg-light {
+    background: #ffffff !important;
+}
+
+.navbar {
+    border-bottom: solid 1px #eee;
+}
+
+.nav-link {
+    color: #272a2d !important;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #fe7f01 !important;
+}
+
+.navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+    top: 0;
+    position: absolute;
+}
+
+.logo {
+    float: left;
+    color: #fe7f01;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 2.4rem;
+    overflow: hidden;
+    width: 2.5rem;
+    padding-left: 0.1rem;
+    transform: scale(1, 2);
+    -webkit-transform:scale(1, 2);  /* Chrome, Safari, Opera */
+    -moz-transform: scale(1, 2);    /* Mozilla Firefox */
+    -ms-transform: scale(1, 2);
+}
+
+.logo span {
+    position: relative;
+    margin-left: -0.4rem;
+
+}
+
+.logotext {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.25rem 2.7rem;
+}
+
+.navbar-toggler{
+    float: right !important;
+}
