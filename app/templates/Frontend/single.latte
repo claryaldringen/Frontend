@@ -1,10 +1,15 @@
+{dump $items['items']}
 {foreach $items['items'] as $index => $item}
-	{dump $items['items']}
+	{if $item['visibility'] == 'visible'}
 	<a name="{$item['url']}"></a>
     {if $index}
-        {if $item['url'] == "kontakt" }
+		<p>&nbsp;</p><p>&nbsp;</p>
+        {if $item['url'] == "kontakt"}
 			<div class="container-fluid">
 			<div class="container">
+		{elseif $item['type_id'] == 2}
+			<div class="container-fluid nopadding">
+			<div class="fluid-header"><h1>{$item['text']}</h1></div>
         {else}
 			<div class="container">
 			<h1>{$item['text']}</h1>
@@ -27,5 +32,8 @@
 			{include 'discussion.latte', 'item' => $item}
 		{/if}
 	{/if}
-	{if $index}</div>{/if}
+	{if $index}
+		</div>
+	{/if}
+	{/if}
 {/foreach}

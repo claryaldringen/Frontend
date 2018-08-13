@@ -1,13 +1,4 @@
 parameters:
-    siteId: 7
-
-dibi:
-	host: db
-	username: root
-	password: somepass
-	database: 318_cms
-	lazy: TRUE
-
-application:
-	catchExceptions: false
+    siteId: 9
+    isSinglePage: true
 

@@ -21,7 +21,7 @@ body {
 }
 
 .jumbotron h1 {
-    margin-top: 15vh;
+    margin-top: 25vh;
     color: #ffffff;
     text-shadow: 1px 1px #272a2d;
 }
@@ -38,7 +38,7 @@ body {
 }
 
 .jumbotron button {
-    margin-top: 4rem;
+    margin-top: 3rem;
     background: #fe7f01;
     color: #ffffff;
     border: solid 1px #fe7f01;
@@ -52,6 +52,7 @@ body {
     background: #272a2d;
     color: #ffffff;
     padding: 2rem 0;
+    overflow: hidden;
 }
 
 .container-fluid img {
@@ -115,4 +116,42 @@ body {
 
 .navbar-toggler{
     float: right !important;
+}
+
+.galleryimg {
+    /* width: 100%; */
+    margin: 0 !important;
+    height: 50%;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+.innerdiv {
+    padding-top: 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.shadow {
+    width: 100%;
+    height: 100%;
+    background: rgba(45, 46, 49, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 37%;
+}
+
+.shadow:hover {
+    background: rgba(45, 46, 49, 0.0);
+}
+
+.fluid-header {
+    background: #ffffff;
+    color: #272a2d;
+    padding-bottom: 8px;
 }
