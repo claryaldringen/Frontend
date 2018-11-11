@@ -23,17 +23,26 @@
 	{foreach $flashes as $flash}<div class="box"><h3>{$flash->message}</h3></div>{/foreach}
   <div class="box"><h1>{$title}</h1></div>
   <div class="box left">
-    {control emailForm}
+	{control emailForm}
    </div>
   <div class="box right">{$text|noescape}</div>
   <div class="box" style="clear: both;">
-  	<h2>Diskuze</h2>
-  	<div id="discussion"></div>
+	<h2>Diskuze</h2>
+	<div id="discussion"></div>
   </div>
   <script type="text/javascript">
 	  window.component = 'discussion';
 	  window.baseUrl = {link Ajax:default};
-		window.menuId = {$item['id']};
+	  window.menuId = {$item['id']};
+
   </script>
+	<script type="text/javascript" n:syntax="off">
+		grecaptcha.ready(function() {
+			grecaptcha.execute('6Lfx6XkUAAAAAKncM-QN-Rvv-EcMKbRirqNhNueo', {action: 'contact'})
+				.then(function(token) {
+					document.getElementById('captcha').value = token
+				});
+		});
+	</script>
 
 {/block}

@@ -46,6 +46,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			->addCondition(UI\Form::FILLED)
 			->addRule(UI\Form::EMAIL, 'Váše e-mailová adresa není správně zadaná. Zkontrolujte, zdali jste ji zadali ve správném tvaru.');
 		$form->addTextArea('message', 'Vaše zpráva:')->setRequired('Vložte prosím text vaší zprávy.');
+        $form->addHidden('captcha')->setHtmlId('captcha');
 		$form->addSubmit('send', 'Odeslat');
 		$form->onSuccess[] = array($this, 'emailFormSubmitted');
 		return $form;
@@ -53,15 +54,38 @@ class FrontendPresenter extends cms\FrontendPresenter {
 
 	public function emailFormSubmitted(UI\Form $form) {
 		$values = $form->getValues();
-		$mail = new Message();
-		if(!empty($values['email']))$mail->setFrom($values['email']);
-		$mail->setSubject('Vzkaz ze stránek');
-		$mail->setBody($values['message']);
-		$mail->addAttachment('example.txt', var_export($this->context->getByType('Nette\Http\Request')->getHeaders(), true));
-		$mail->addTo('asonance@asonance.cz');
-		$mail->addBcc('clary.aldringen@seznam.cz');
-		$this->context->getService('mailer')->send($mail);
-		$this->flashMessage('Vaše zpráva byla odeslána.');
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array('secret' =>'6Lfx6XkUAAAAAASelLokXtBuN8KSL0xYup-VuiDl', 'response' => $values['captcha']);
+
+        // use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        if ($result === FALSE) {
+            $this->flashMessage('Došlo k chybě a Vaše zpráva nebyla odeslána. Zkuste to prosím později.');
+            $this->redirect('this');
+            return;
+        }
+
+        $captcha = json_decode($result);
+        if($captcha->success && $captcha->score > 0.5) {
+            $mail = new Message();
+            if (!empty($values['email'])) $mail->setFrom($values['email']);
+            $mail->setSubject('Vzkaz ze stránek');
+            $mail->setBody($values['message']);
+            $mail->addAttachment('example.txt', var_export($this->context->getByType('Nette\Http\Request')->getHeaders(), true));
+            $mail->addTo('asonance@asonance.cz');
+            $mail->addBcc('clary.aldringen@seznam.cz');
+            $this->context->getService('mailer')->send($mail);
+            $this->flashMessage('Vaše zpráva byla odeslána.');
+        }
 		$this->redirect('this');
 	}
 
