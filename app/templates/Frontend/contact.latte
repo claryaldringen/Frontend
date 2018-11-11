@@ -67,4 +67,13 @@
 			<div style="clear: both;"></div>
 		</div>
 	</div>
+	<script n:syntax="off">
+			grecaptcha.ready(function() {
+				grecaptcha.execute('6Lfx6XkUAAAAAKncM-QN-Rvv-EcMKbRirqNhNueo', {action: 'contact'})
+					.then(function(token) {
+					  document.getElementById('captchacr').value = token
+					  document.getElementById('captchask').value = token
+					});
+			});
+	</script>
 {/block}
