@@ -2,6 +2,7 @@
 {foreach $flashes as $flash}<div class="box"><h3>{$flash->message}</h3></div>{/foreach}
 {if isset($albums)}
 	<div class="box">
+		<a href="#order" onclick="$('#order').show()" title="Objednat alba poštou"><img src="/images/cart.png" class="album-cart-all"></a>
 		<h1>{$title}</h1>
 		{$text|noescape}
 	</div>
@@ -58,45 +59,46 @@
 		{/foreach}
 		</table>
 	</div>
-	<div id="order" class="box order" {if !isset($orderAlbums) && !isset($showError)}style="display: none;"{/if}>
-		<a name="order"></a>
-		<h2>Objednávka</h2>
-		{if isset($orderAlbums)}
-			<div class="recapitulation">
-				<br>
-				<h3>Položky v objednávce</h3>
-				<table>
-					<tr><th>Počet</th><th>Název</th><th>Cena za jeden kus</th><th>Cena za všechny kusy</th></tr>
-					{foreach $orderAlbums as $album}
-						<tr>
-							<td>{$album['count']}</td>
-							<td>{$album['name']}</td>
-							<td class="ra">{$album['price']} Kč</td>
-							<td class="ra">{$album['price']*$album['count']} Kč</td>
-						</tr>
-					{/foreach}
-					<tr><th colspan="3">Cena celkem včetně poštovného ({$post} Kč):</th><th class="ra">{$totalPrice} Kč</th></tr>
-				</table>
-			</div>
-			<div class="address">
-				<br>
-				<h3>Doručovací adresa</h3>
-				{$name}<br>{$street}<br>{$city}
-				<br><br>
-				<h3>Poznámka</h3>
-				{$message}
-				<br>
-			</div>
-			<div class="total-order">
-				{control recapitulationForm}
-			</div>
-		{else}
-			{if isset($showError)}<h3>{$showError}</h3>{/if}
-			{control orderForm}
-			<div style="clear: both;"></div>
-		{/if}
-	</div>
-	<script type="text/javascript">
-		if(window.location.hash == '#order') $('#order').show();
-	</script>
 {/if}
+<div id="order" class="box order" {if !isset($orderAlbums) && !isset($showError)}style="display: none;"{/if}>
+	<a name="order"></a>
+	<h2>Objednávka</h2>
+	{if isset($orderAlbums)}
+		<div class="recapitulation">
+			<br>
+			<h3>Položky v objednávce</h3>
+			<table>
+				<tr><th>Počet</th><th>Název</th><th>Cena za jeden kus</th><th>Cena za všechny kusy</th></tr>
+				{foreach $orderAlbums as $album}
+					<tr>
+						<td>{$album['count']}</td>
+						<td>{$album['name']}</td>
+						<td class="ra">{$album['price']} Kč</td>
+						<td class="ra">{$album['price']*$album['count']} Kč</td>
+					</tr>
+				{/foreach}
+				<tr><th colspan="3">Cena celkem včetně poštovného ({$post} Kč):</th><th class="ra">{$totalPrice} Kč</th></tr>
+			</table>
+		</div>
+		<div class="address">
+			<br>
+			<h3>Doručovací adresa</h3>
+			{$name}<br>{$street}<br>{$city}
+			<br><br>
+			<h3>Poznámka</h3>
+			{$message}
+			<br>
+		</div>
+		<div class="total-order">
+			{control recapitulationForm}
+		</div>
+	{else}
+		{if isset($showError)}<h3>{$showError}</h3>{/if}
+	{control orderForm}
+		<div style="clear: both;"></div>
+	{/if}
+</div>
+<script type="text/javascript">
+	if(window.location.hash == '#order') $('#order').show();
+</script>
+

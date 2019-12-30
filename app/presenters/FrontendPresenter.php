@@ -127,18 +127,22 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			}
 		}
 
-		$postTypes = array(99,155,170);
-		$this->template->post =  $postTypes[$values['post']];
+		$postTypes = array(102,160,180);
+		$this->template->post = $postTypes[$values['post']];
 		$totalPrice = $this->template->post;
 		$albums = $this->context->getService('albumModel')->setLanguage($this->languageId)->getAlbum($ids);
 		foreach($albums as &$album) {
 			$album->count = $counts[$album->id];
 			$totalPrice += $album->count * $album->price;
 		}
-		if($totalPrice > 599 && $values['post'] == 0) {
+		if($totalPrice > 602 && $values['post'] == 0) {
 			$this->template->showError = 'Cena objednávky přesahuje 500 Kč. Vyberte prosím jiný způsob doručení.';
 			return;
 		}
+        if($totalPrice === $this->template->post) {
+            $this->template->showError = 'Není vybraná žádná položka. Vyberte prosím, kolik a kterých položek chcete poslat.';
+            return;
+        }
 		$this->template->orderAlbums = $albums;
 		$this->template->totalPrice = $totalPrice;
 		$this->template->name = $values['name'];

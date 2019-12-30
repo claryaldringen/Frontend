@@ -409,6 +409,12 @@ img{
     margin-right: 1%;
 }
 
+.album-cart-all {
+    float: right;
+    width: 3%;
+    margin-right: 1%;
+}
+
 .song-cart{
     width: 32px;
 }
