@@ -15,7 +15,7 @@
 		{foreach $folder['folders'] as $folderItem}
 			{if isset($folderItem['images'][0]) }
 				<a href="/{$url}/{$folderItem['url']}.html" class="coatofarms">
-					<img src="http://{$adminHost}/images/userimages/large/{$folderItem['images'][0]['file']}">
+					<img src="https://{$adminHost}/images/userimages/large/{$folderItem['images'][0]['file']}">
 					<br>
 					<h2>{$folderItem['name']}</h2>
 				</a>
@@ -37,7 +37,7 @@
 			{if isset($folderItem['images'][0]) }
 				<a href="/{$url}/{$folderItem['url']}.html" class="image">
 					<div>
-						<img src="http://{$adminHost}/images/userimages/medium/{$folderItem['images'][0]['file']}">
+						<img src="https://{$adminHost}/images/userimages/medium/{$folderItem['images'][0]['file']}">
 					</div>
 					<span>{$folderItem['name']}</span>
 				</a>
@@ -52,8 +52,8 @@
 		{foreach $folder['images'] as $image}
 			{if $image['parent'] == $folder['id'] }
 			{
-				src: 'http://{$adminHost|noescape}/images/userimages/original/{$image['file']|noescape}',
-				thumbnail: 'http://{$adminHost|noescape}/images/userimages/medium/{$image['file']|noescape}',
+				src: 'https://{$adminHost|noescape}/images/userimages/original/{$image['file']|noescape}',
+				thumbnail: 'https://{$adminHost|noescape}/images/userimages/medium/{$image['file']|noescape}',
 				w: {$image['width']},
 				h: {$image['height']},
 				title: {$image['name']}
