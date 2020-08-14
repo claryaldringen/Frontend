@@ -9,7 +9,7 @@
 	{foreach $albums as $album}
 		<div class="box album">
 			<a href="{$item['url']}/{$album->url}.html" title="{$album->name}">
-			<img src="http://{$adminHost}/images/userimages/original/{$album->file}">
+			<img src="https://{$adminHost}/images/userimages/original/{$album->file}">
 			<h2>{$album->name|truncate:42}</h2>
 			{$album->year}
 			</a>
@@ -26,7 +26,7 @@
 		<h1>{$album->name} <span>{$album->year}</span></h1>
 	</div>
 	<div class="box album-opened">
-		<img src="http://{$adminHost}/images/userimages/original/{$album->file}">
+		<img src="https://{$adminHost}/images/userimages/original/{$album->file}">
 		<div class="album-text">
 		{$album->text|noescape}
 		</div>
@@ -36,7 +36,7 @@
 		{foreach $album->songs as $i => $song}
 		<tr>
 			<td><h3>{$i+1}.</h3></td><td><h3 {if !empty($song->text)}onclick="$('#songtext{$i}').slideToggle()" class="hand"{/if}>{$song->name}</h3></td>
-			<td>{if !empty($song->file)}<audio src="http://{$adminHost}/userfiles/{$song->file}" controls class="audio1"></audio>{/if}</td>
+			<td>{if !empty($song->file)}<audio src="https://{$adminHost}/userfiles/{$song->file}" controls class="audio1"></audio>{/if}</td>
 			<td class="td-text">
 				{if !empty($song->text)}
 				<a href="#" onclick="$('#songtext{$i}').slideToggle()">Zobrazit&nbsp;text</a>
@@ -51,7 +51,7 @@
 		<tr>
 			<td colspan="5">
 				<div id="songtext{$i}" class="song-text">
-					{if !empty($song->file)}<audio src="http://{$adminHost}/userfiles/{$song->file}" controls class="audio2"></audio>{/if}
+					{if !empty($song->file)}<audio src="https://{$adminHost}/userfiles/{$song->file}" controls class="audio2"></audio>{/if}
 					{$song->text|noescape}
 				</div>
 			</td>

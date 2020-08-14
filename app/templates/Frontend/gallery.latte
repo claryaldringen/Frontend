@@ -18,7 +18,7 @@
 		{foreach $folder['folders'] as $folderItem}
 			{if isset($folderItem['images'][0]) }
 			<a href="/{$url}/{$folderItem['url']}.html" class="folder">
-				<img src="http://{$adminHost}/images/userimages/medium/{$folderItem['images'][0]['file']}">
+				<img src="https://{$adminHost}/images/userimages/medium/{$folderItem['images'][0]['file']}">
 				<br>
 				<h3>{$folderItem['name']}</h3>
 			</a>
@@ -34,8 +34,8 @@
 						<span>{$image['name']}</span>
 					</a>
 				{else}
-				<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-1" data-title="{$image['name']}">
-					<img src="http://{$adminHost}/images/userimages/small/{$image['file']}">
+				<a href="https://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-1" data-title="{$image['name']}">
+					<img src="https://{$adminHost}/images/userimages/small/{$image['file']}">
 					{*<br>
 					<span>{$image['name']}</span>*}
 				</a>
