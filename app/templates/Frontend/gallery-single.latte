@@ -7,11 +7,11 @@
 		{if isset($fold['text'])}{$fold['text']|noescape}{/if}
 		{foreach $fold['images'] as $i => $image}
 			{if $i == 0}
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
-			<img src="http://{$adminHost}/images/userimages/medium/{$image['file']}">
+			<a href="https://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
+			<img src="https://{$adminHost}/images/userimages/medium/{$image['file']}">
 			</a>
 			{else}
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}"></a>
+			<a href="https://{$adminHost}/images/userimages/large/{$image['file']}" class="image" data-lightbox="image-{$fold['id']}"></a>
 			{/if}
 		{/foreach}
 	{/if}
