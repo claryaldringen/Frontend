@@ -5,14 +5,14 @@
 	{foreach $albums as $album}
 		<div class="box album">
 			<a href="{$item['url']}/{$album->url}.html">
-			<image src="http://{$adminHost}/images/userimages/original/{$album->file}">
+			<image src="https://{$adminHost}/images/userimages/original/{$album->file}">
 			<h2>{$album->name}</h2>
 			{$album->year}
 			</a>
 		</div>
 	{/foreach}
 {else}
-		<img src="http://{$adminHost}/images/userimages/original/{$album->file}">
+		<img src="https://{$adminHost}/images/userimages/original/{$album->file}">
 	<div>
 		{if !empty($album->link)}
 			<a href="{$album->link}" title="Zakoupit album {$album->name} online ve formátu mp3">Koupit</a>
@@ -24,7 +24,7 @@
 		{foreach $album->songs as $i => $song}
 		<tr>
 			<td><h3>{$i+1}.</h3></td><td><h3 {if !empty($song->text)}onclick="$('#songtext{$i}').slideToggle()" class="hand"{/if}>{$song->name}</h3></td>
-			<td>{if !empty($song->file)}<audio src="http://{$adminHost}/userfiles/{$song->file}" controls preload></audio>{/if}</td>
+			<td>{if !empty($song->file)}<audio src="https://{$adminHost}/userfiles/{$song->file}" controls preload></audio>{/if}</td>
 			<td class="td-text">
 				{if !empty($song->text)}
 				<a href="#" onclick="$('#songtext{$i}').slideToggle()">Zobrazit&nbsp;text</a>
