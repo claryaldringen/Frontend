@@ -15,7 +15,7 @@ function show(id) {
 			{breakIf $i > 0}
 				<div class="col-md-4" onClick="show({$fold['id']})">
 					<h2>{$fold['name']}</h2>
-					<img src="http://{$adminHost}/images/userimages/large/{$image['file']}" class="bigimage">
+					<img src="https://{$adminHost}/images/userimages/large/{$image['file']}" class="bigimage">
 				</div>
 		{/foreach}
 	{/if}
@@ -29,8 +29,8 @@ function show(id) {
 		{if isset($fold['text'])}{$fold['text']|noescape}{/if}
 		{foreach $fold['images'] as $i => $image}
 			<div class="image">
-			<a href="http://{$adminHost}/images/userimages/large/{$image['file']}" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
-				<img src="http://{$adminHost}/images/userimages/small/{$image['file']}">
+			<a href="https://{$adminHost}/images/userimages/large/{$image['file']}" data-lightbox="image-{$fold['id']}" data-title="{$image['name']}">
+				<img src="https://{$adminHost}/images/userimages/small/{$image['file']}">
 			</a>
 			</div>
 		{/foreach}
