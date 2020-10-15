@@ -159,7 +159,9 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			'name' => $values['name'],
 			'email' => $values['email'],
 			'post' => $values['post'],
-			'message' => $values['message']);
+			'message' => $values['message'],
+            'totalPrice' => $totalPrice
+        );
 		$this['recapitulationForm']->setDefaults(array('data' => json_encode($data)));
 	}
 
@@ -176,7 +178,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 		$post = array('zásilku na dobírku','balík na poštu', 'balík do ruky');
 		$body = "Dobrý den,\n prosím o zaslání alb\n\n";
 		foreach($values->albums as $album) {
-			$body .= "{$album->count}x {$album->name}\n";
+			$body .= "{$album->count}x {$album->name} ({$album->price} Kč)\n";
 		}
 		$body .= "jako {$post[$values->post]} na adresu:\n\n{$values->name}\n{$values->street}\n{$values->city}\nTelefon:{$values->phone}\n\nPoznámka:\n{$values->message}\n\nS pozdravem\n{$values->name}";
 		$mail = new Message();
@@ -185,6 +187,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 		$mail->setBody($body);
 		$mail->addTo('prodej@asonance.cz');
 		$mail->addBcc($values->email, $values->name);
+        $mail->addBcc('clary.aldringen@seznam.cz', $values->name);
 		$this->context->getService('mailer')->send($mail);
 		$this->flashMessage('Objednávka byla odeslána. Kopie objednávky byla odeslána také na ' . $values->email);
 		$this->redirect('this');
