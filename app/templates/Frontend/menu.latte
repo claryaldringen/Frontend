@@ -4,7 +4,7 @@
 		<li>
 		{if !empty($absolute)}
 			{var $parts = explode('/', $url)}
-			{php $parts[count($parts)-1] = $menuItem['url'] ?}
+			{php $parts[count($parts)-1] = $menuItem['url'] }
 			{var $link = implode('/', $parts)}
 		{else}
 			{var $link = $url . '/' . $menuItem['url'] }
