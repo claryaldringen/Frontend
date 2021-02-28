@@ -5,6 +5,9 @@ use Nette\Application\UI;
 
 class FrontendPresenter extends cms\FrontendPresenter {
 
+    /** @var Nette\Mail\IMailer @inject */
+    public $mailer;
+
 	public function renderContact($url) {
 		$item = $this->baseRender($url);
 		$this->template->text = $this->context->getService('pageModel')->setLanguage($this->languageId)->getPage($item['id']);
@@ -25,13 +28,13 @@ class FrontendPresenter extends cms\FrontendPresenter {
 	public function emailFormSubmitted(UI\Form $form) {
 		$values = $form->getValues();
 		$mail = new Message();
-		if(!empty($values['email']))$mail->setFrom($values['email']);
-		$mail->setSubject('Vzkaz ze stránek');
+		$mail->setFrom('info@hradeckydvur.net');
+		$mail->setSubject('Vzkaz ze stránek od '.$values['email']);
 		$mail->setBody($values['message']);
 		$mail->addAttachment('example.txt', var_export($this->context->getByType('Nette\Http\Request')->getHeaders(), true));
 		$mail->addTo('admindvur@seznam.cz');
 		$mail->addBcc('clary.aldringen@seznam.cz');
-		$this->context->getService('mailer')->send($mail);
+		$this->mailer->send($mail);
 		$this->flashMessage('Vaše zpráva byla odeslána.');
 		$this->redirect('this');
 	}
