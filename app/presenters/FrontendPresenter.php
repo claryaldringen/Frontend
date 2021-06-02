@@ -5,6 +5,9 @@ use Nette\Application\UI;
 
 class FrontendPresenter extends cms\FrontendPresenter {
 
+    /** @var Nette\Mail\IMailer @inject */
+    public $mailer;
+
 	protected function renderDiscography($item, $url)
 	{
 		parent::renderDiscography($item, $url);
@@ -77,13 +80,13 @@ class FrontendPresenter extends cms\FrontendPresenter {
         $captcha = json_decode($result);
         if($captcha->success && $captcha->score > 0.5) {
             $mail = new Message();
-            if (!empty($values['email'])) $mail->setFrom($values['email']);
-            $mail->setSubject('Vzkaz ze stránek');
+            $mail->setFrom('asonance@asonance.cz');
+            $mail->setSubject("Vzkaz ze stránek od {$values['email']}");
             $mail->setBody($values['message']);
             $mail->addAttachment('example.txt', var_export($this->context->getByType('Nette\Http\Request')->getHeaders(), true));
             $mail->addTo('asonance@asonance.cz');
             $mail->addBcc('clary.aldringen@seznam.cz');
-            $this->context->getService('mailer')->send($mail);
+            $this->mailer->send($mail);
             $this->flashMessage('Vaše zpráva byla odeslána.');
         }
 		$this->redirect('this');
@@ -92,13 +95,21 @@ class FrontendPresenter extends cms\FrontendPresenter {
 	public function createComponentOrderForm() {
 		$form = new UI\Form($this, 'orderForm');
 		$this->context->getService('albumModel')->setLanguage($this->languageId);
-		$albums = array_merge($this->context->getService('albumModel')->getAlbums(41), $this->context->getService('albumModel')->getAlbums(51));
+		$albums = $this->context->getService('albumModel')->getAlbums(41);
 		$form->addGroup('Alba a zpěvníky');
 		foreach($albums as $album) {
 			if($album->count) {
-				$form->addText('album_' . $album->id, $album->name . ' (' . $album->price . ' Kč):')->setType('number')->setDefaultValue(0);
+				$form->addText('album_' . $album->id, 'CD ' . $album->name . ' (' . $album->price . ' Kč):')->setType('number')->setHtmlAttribute('min', 0)->setDefaultValue(0);
 			}
 		}
+
+        $books = $this->context->getService('albumModel')->getAlbums(51);
+        foreach($books as $book) {
+            if($book->count) {
+                $form->addText('album_' . $book->id, 'Zpěvník ' . $book->name . ' (' . $book->price . ' Kč):')->setType('number')->setHtmlAttribute('min', 0)->setDefaultValue(0);
+            }
+        }
+
 		$form->addGroup('Kontaktní údaje');
 		$form->addText('email', 'Váš e-mail:')
 			->addCondition(UI\Form::FILLED)
@@ -108,7 +119,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 		$form->addText('street','Ulice a číslo popisné')->setRequired('Ulice a číslo popisné musí být vyplněny.');
 		$form->addText('city','PSČ a Město')->setRequired('PSČ a město musí být vyplněny.');
 		$form->addText('phone','Telefon')->setRequired('Telefonní číslo musí být vyplněno.')->addRule(OrderFormRules::PHONE, 'Telefonní číslo nemá správný tvar.');
-		$form->addRadioList('post', 'Typ doručení:', array('Doporučená dobírka (Česká pošta): 108-Kč', 'Balíky (Č.p.) pouze při ceně nad 800,-Kč:', '- na poštu 163,-Kč', '- do ruky 183,-Kč'))
+		$form->addRadioList('post', 'Typ doručení:', array('Doporučená dobírka (Česká pošta): 119-Kč', 'Balíky (Č.p.) pouze při ceně nad 800,-Kč:', '- na poštu 169,-Kč', '- do ruky 189,-Kč'))
             ->setHtmlAttribute('style:', array('', 'display: none', '', ''))
             ->setHtmlAttribute('disabled?', 1)
             ->setDefaultValue(0);
@@ -130,7 +141,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			}
 		}
 
-		$postTypes = array(108,163,183);
+		$postTypes = array(119, 0, 169, 189);
 		$this->template->post = $postTypes[$values['post']];
 		$totalPrice = $this->template->post;
 		$albums = $this->context->getService('albumModel')->setLanguage($this->languageId)->getAlbum($ids);
@@ -138,7 +149,7 @@ class FrontendPresenter extends cms\FrontendPresenter {
 			$album->count = $counts[$album->id];
 			$totalPrice += $album->count * $album->price;
 		}
-		if($totalPrice > 908 && $values['post'] == 0) {
+		if($totalPrice > 919 && $values['post'] == 0) {
 			$this->template->showError = 'Cena objednávky přesahuje 800 Kč. Vyberte prosím jiný způsob doručení.';
 			return;
 		}
@@ -175,21 +186,34 @@ class FrontendPresenter extends cms\FrontendPresenter {
 	public function recapitulationFormSubmitted(UI\Form $form) {
 		$values = $form->getValues();
 		$values = json_decode($values['data']);
-		$post = array('zásilku na dobírku','balík na poštu', 'balík do ruky');
-		$body = "Dobrý den,\n prosím o zaslání alb\n\n";
+		$post = array('zásilku na dobírku', '', 'balík na poštu', 'balík do ruky');
+
+		$body = "Dobrý den,\nprosím o zaslání alb\n\n";
+		$rek = "";
 		foreach($values->albums as $album) {
-			$body .= "{$album->count}x {$album->name} ({$album->price} Kč)\n";
+			$rek .= "{$album->count}x {$album->name} ({$album->price} Kč)\n";
 		}
-		$body .= "jako {$post[$values->post]} na adresu:\n\n{$values->name}\n{$values->street}\n{$values->city}\nTelefon:{$values->phone}\n\nPoznámka:\n{$values->message}\n\nS pozdravem\n{$values->name}";
+		$body .= $rek;
+		$body .= "jako {$post[$values->post]} na adresu:\n\n{$values->name}\n{$values->street}\n{$values->city}\nTelefon:{$values->phone}\n\nPoznámka:\n{$values->message}\n\nS pozdravem\n{$values->name}\n({$values->email})";
 		$mail = new Message();
-		$mail->setFrom($values->email, $values->name);
+		$mail->setFrom('asonance@asonance.cz');
 		$mail->setSubject('Objednávka alb a zpěvníků');
 		$mail->setBody($body);
 		$mail->addTo('prodej@asonance.cz');
-		$mail->addBcc($values->email, $values->name);
-        $mail->addBcc('clary.aldringen@seznam.cz', $values->name);
-		$this->context->getService('mailer')->send($mail);
-		$this->flashMessage('Objednávka byla odeslána. Kopie objednávky byla odeslána také na ' . $values->email);
+		$this->mailer->send($mail);
+
+        $body2 = "Dobrý den,\npotvrzujeme přijetí objednávky alb a zpěvníků. Objednávku vyřídíme zpravidla do týdne.\n\nRekapitulace objednávky:\n";
+        $body2 .= $rek;
+        $body2 .= "\nZásilka bude doručena jako {$post[$values->post]} s dobírkou na adresu:\n\n{$values->name}\n{$values->street}\n{$values->city}\n\nS přáním pěkného dne\nAsonance";
+
+        $mail2 = new Message();
+        $mail2->setFrom('prodej@asonance.cz');
+        $mail2->setSubject('Asonance - potvrzení objednávky alb a zpěvníků');
+        $mail2->setBody($body2);
+        $mail2->addTo($values->email);
+        $this->mailer->send($mail2);
+
+		$this->flashMessage('Objednávka byla odeslána. Rekapitulace objednávky byla odeslána na email ' . $values->email);
 		$this->redirect('this');
 	}
 
